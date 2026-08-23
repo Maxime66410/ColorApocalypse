@@ -16,6 +16,10 @@ public class Config {
             .comment("Whether the wheel draws automatically over time (Peaceful is always excluded).")
             .define("autoTimerEnabled", true);
 
+    public static final ForgeConfigSpec.BooleanValue MOB_KILL_ENABLED = BUILDER
+            .comment("Whether mobs of the eliminated color are killed alongside its blocks.")
+            .define("mobKillEnabled", true);
+
     public static final ForgeConfigSpec.IntValue EASY_INTERVAL_MINUTES = BUILDER
             .comment("Minutes between automatic draws on Easy.")
             .defineInRange("easyIntervalMinutes", 12, 1, 1440);
@@ -33,6 +37,7 @@ public class Config {
     public static void registerSettings() {
         SettingsRegistry.register("destructionRadius", new IntSetting(DESTRUCTION_RADIUS, 1, 32));
         SettingsRegistry.register("autoTimerEnabled", new BoolSetting(AUTO_TIMER_ENABLED));
+        SettingsRegistry.register("mobKillEnabled", new BoolSetting(MOB_KILL_ENABLED));
         SettingsRegistry.register("easyIntervalMinutes", new IntSetting(EASY_INTERVAL_MINUTES, 1, 1440));
         SettingsRegistry.register("normalIntervalMinutes", new IntSetting(NORMAL_INTERVAL_MINUTES, 1, 1440));
         SettingsRegistry.register("hardIntervalMinutes", new IntSetting(HARD_INTERVAL_MINUTES, 1, 1440));

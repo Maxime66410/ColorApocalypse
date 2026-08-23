@@ -1,0 +1,28 @@
+{
+  /* Thanks to https://minecraft.fandom.com/wiki/Mob for listing all Entity ID */
+  "white": ["minecraft:chicken", "minecraft:ghast", "minecraft:happy_ghast", "minecraft:goat",
+    "minecraft:polar_bear", "minecraft:skeleton", "minecraft:skeleton_horse", "minecraft:snow_golem"],
+  "orange": ["minecraft:blaze", "minecraft:camel", "minecraft:copper_golem", "minecraft:fox",
+    "minecraft:magma_cube", "minecraft:nautilus", "minecraft:strider"],
+  "magenta": [],
+  "light_blue": ["minecraft:allay", "minecraft:breeze", "minecraft:stray"],
+  "yellow": ["minecraft:bee", "minecraft:ocelot", "minecraft:pufferfish", "minecraft:sulfur_cube"],
+  "lime": ["minecraft:guardian", "minecraft:slime"],
+  "pink": ["minecraft:axolotl", "minecraft:hoglin", "minecraft:pig", "minecraft:piglin",
+    "minecraft:piglin_brute", "minecraft:salmon", "minecraft:zombified_piglin"],
+  "gray": ["minecraft:donkey", "minecraft:phantom", "minecraft:vex", "minecraft:zoglin"],
+  "light_gray": ["minecraft:cod", "minecraft:dolphin", "minecraft:elder_guardian",
+    "minecraft:iron_golem", "minecraft:silverfish"],
+  "cyan": ["minecraft:glow_squid", "minecraft:wandering_trader"],
+  "purple": ["minecraft:endermite"],
+  "blue": ["minecraft:cave_spider", "minecraft:squid", "minecraft:warden"],
+  "brown": ["minecraft:armadillo", "minecraft:camel_husk", "minecraft:husk", "minecraft:mule",
+    "minecraft:parched", "minecraft:tadpole", "minecraft:villager"],
+  "green": ["minecraft:bogged", "minecraft:creeper", "minecraft:drowned", "minecraft:giant",
+    "minecraft:sniffer", "minecraft:turtle", "minecraft:witch", "minecraft:zombie",
+    "minecraft:zombie_horse", "minecraft:zombie_nautilus", "minecraft:zombie_villager"],
+  "red": ["minecraft:mooshroom"],
+  "black": ["minecraft:bat", "minecraft:creaking", "minecraft:enderman", "minecraft:ender_dragon",
+    "minecraft:evoker", "minecraft:illusioner", "minecraft:pillager", "minecraft:ravager",
+    "minecraft:spider", "minecraft:vindicator", "minecraft:wither", "minecraft:wither_skeleton"]
+}

@@ -12,8 +12,10 @@ import net.minecraft.server.players.PlayerList;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.event.TickEvent;
+import org.furranystudio.colorapocalypse.Config;
 import org.furranystudio.colorapocalypse.color.ColorPoolData;
 import org.furranystudio.colorapocalypse.color.DestructionQueue;
+import org.furranystudio.colorapocalypse.color.MobDestroyer;
 import org.furranystudio.colorapocalypse.network.ModNetworking;
 import org.furranystudio.colorapocalypse.network.RouletteSpinPacket;
 import org.furranystudio.colorapocalypse.sound.ModSounds;
@@ -147,6 +149,7 @@ public final class RouletteSequence {
     private static void reveal(MinecraftServer server) {
         DyeColor color = drawnColor;
         int chunkCount = DestructionQueue.start(color, server);
+        int mobsKilled = Config.MOB_KILL_ENABLED.get() ? MobDestroyer.kill(color, server) : 0;
 
         PlayerList players = server.getPlayerList();
         players.broadcastAll(new ClientboundSetTitlesAnimationPacket(5, 60, 20));
@@ -157,8 +160,9 @@ public final class RouletteSequence {
             Component.literal("has been eliminated!")));
         SoundBroadcaster.playToAll(server, ModSounds.ROULETTE_REVEAL, SoundSource.MASTER, 1f, 1f);
 
+        String mobSuffix = Config.MOB_KILL_ENABLED.get() ? " and killing " + mobsKilled + " mob(s)" : "";
         broadcastMessage(server, "[ColorApocalypse] " + color.getName() + " eliminated! Destroying its blocks across "
-            + chunkCount + " chunk(s)...");
+            + chunkCount + " chunk(s)" + mobSuffix + "...");
     }
 
     private static void broadcastMessage(MinecraftServer server, String message) {
