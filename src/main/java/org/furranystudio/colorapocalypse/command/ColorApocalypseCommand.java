@@ -8,12 +8,12 @@ import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import org.furranystudio.colorapocalypse.Config;
 import org.furranystudio.colorapocalypse.color.ColorPoolData;
-import org.furranystudio.colorapocalypse.color.DestructionQueue;
 import org.furranystudio.colorapocalypse.settings.SettingsRegistry;
+import org.furranystudio.colorapocalypse.timer.AutoTrigger;
 
 import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 
 public final class ColorApocalypseCommand {
 
@@ -34,6 +34,8 @@ public final class ColorApocalypseCommand {
                     .executes(ColorApocalypseCommand::runStatus))
                 .then(Commands.literal("reset")
                     .executes(ColorApocalypseCommand::runReset))
+                .then(Commands.literal("pause")
+                    .executes(ColorApocalypseCommand::runPause))
                 .then(Commands.literal("settings")
                     .executes(ColorApocalypseCommand::runSettingsList)
                     .then(Commands.argument("parameter", StringArgumentType.word())
@@ -44,26 +46,12 @@ public final class ColorApocalypseCommand {
     }
 
     private static int runStart(CommandContext<CommandSourceStack> context) {
-        ColorPoolData pool = getPool(context);
-        DyeColor color = pool.draw(ThreadLocalRandom.current());
-
-        if (color == null) {
-            context.getSource().sendFailure(Component.literal(
-                "[ColorApocalypse] No colors left in the pool. Use /colorapocalypse reset to refill it."));
-            return 0;
-        }
-
-        int chunkCount = DestructionQueue.start(color, context.getSource().getServer());
-
-        context.getSource().sendSuccess(() -> Component.literal(
-            "[ColorApocalypse] " + color.getName() + " eliminated! Destroying its blocks across "
-                + chunkCount + " chunk(s)..."), true);
-        return 1;
+        return AutoTrigger.draw(context.getSource().getServer()) != null ? 1 : 0;
     }
 
     private static int runStatus(CommandContext<CommandSourceStack> context) {
-        ColorPoolData pool = getPool(context);
-        Set<DyeColor> remaining = pool.getRemaining();
+        var server = context.getSource().getServer();
+        Set<DyeColor> remaining = getPool(context).getRemaining();
 
         StringBuilder message = new StringBuilder(
             "[ColorApocalypse] " + remaining.size() + "/" + DyeColor.values().length + " colors remaining:");
@@ -72,7 +60,14 @@ public final class ColorApocalypseCommand {
                 message.append(' ').append(color.getName());
             }
         }
-        // TODO: report time remaining until the next automatic draw once the timer exists
+
+        long ticksRemaining = AutoTrigger.getTicksRemaining(server);
+        if (ticksRemaining < 0) {
+            message.append("\nAutomatic timer: off.");
+        } else {
+            message.append("\nNext automatic draw in ").append(ticksRemaining / 20).append("s.");
+        }
+
         context.getSource().sendSuccess(() -> Component.literal(message.toString()), true);
         return 1;
     }
@@ -80,6 +75,14 @@ public final class ColorApocalypseCommand {
     private static int runReset(CommandContext<CommandSourceStack> context) {
         getPool(context).reset();
         context.getSource().sendSuccess(() -> Component.literal("[ColorApocalypse] Color pool reset."), true);
+        return 1;
+    }
+
+    private static int runPause(CommandContext<CommandSourceStack> context) {
+        boolean enabled = !Config.AUTO_TIMER_ENABLED.get();
+        Config.AUTO_TIMER_ENABLED.set(enabled);
+        context.getSource().sendSuccess(() -> Component.literal(
+            "[ColorApocalypse] Automatic timer " + (enabled ? "resumed." : "paused.")), true);
         return 1;
     }
 
