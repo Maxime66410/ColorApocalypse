@@ -24,6 +24,10 @@ public class Config {
             .comment("Whether item drops of the eliminated color are destroyed alongside its blocks.")
             .define("itemDestroyEnabled", true);
 
+    public static final ForgeConfigSpec.BooleanValue INVENTORY_ITEM_DESTROY_ENABLED = BUILDER
+            .comment("Whether items of the eliminated color are also removed from every online player's inventory and equipment.")
+            .define("inventoryItemDestroyEnabled", false);
+
     public static final ForgeConfigSpec.IntValue EASY_INTERVAL_MINUTES = BUILDER
             .comment("Minutes between automatic draws on Easy.")
             .defineInRange("easyIntervalMinutes", 12, 1, 1440);
@@ -43,6 +47,7 @@ public class Config {
         SettingsRegistry.register("autoTimerEnabled", new BoolSetting(AUTO_TIMER_ENABLED));
         SettingsRegistry.register("mobKillEnabled", new BoolSetting(MOB_KILL_ENABLED));
         SettingsRegistry.register("itemDestroyEnabled", new BoolSetting(ITEM_DESTROY_ENABLED));
+        SettingsRegistry.register("inventoryItemDestroyEnabled", new BoolSetting(INVENTORY_ITEM_DESTROY_ENABLED));
         SettingsRegistry.register("easyIntervalMinutes", new IntSetting(EASY_INTERVAL_MINUTES, 1, 1440));
         SettingsRegistry.register("normalIntervalMinutes", new IntSetting(NORMAL_INTERVAL_MINUTES, 1, 1440));
         SettingsRegistry.register("hardIntervalMinutes", new IntSetting(HARD_INTERVAL_MINUTES, 1, 1440));

@@ -15,6 +15,7 @@ import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.Config;
 import org.furranystudio.colorapocalypse.color.ColorPoolData;
 import org.furranystudio.colorapocalypse.color.DestructionQueue;
+import org.furranystudio.colorapocalypse.color.InventoryItemDestroyer;
 import org.furranystudio.colorapocalypse.color.ItemDestroyer;
 import org.furranystudio.colorapocalypse.color.MobDestroyer;
 import org.furranystudio.colorapocalypse.network.ModNetworking;
@@ -152,6 +153,8 @@ public final class RouletteSequence {
         int chunkCount = DestructionQueue.start(color, server);
         int mobsKilled = Config.MOB_KILL_ENABLED.get() ? MobDestroyer.kill(color, server) : 0;
         int itemsDestroyed = Config.ITEM_DESTROY_ENABLED.get() ? ItemDestroyer.destroy(color, server) : 0;
+        int inventoryItemsDestroyed = Config.INVENTORY_ITEM_DESTROY_ENABLED.get()
+            ? InventoryItemDestroyer.destroy(color, server) : 0;
 
         PlayerList players = server.getPlayerList();
         players.broadcastAll(new ClientboundSetTitlesAnimationPacket(5, 60, 20));
@@ -164,8 +167,10 @@ public final class RouletteSequence {
 
         String mobSuffix = Config.MOB_KILL_ENABLED.get() ? ", killing " + mobsKilled + " mob(s)" : "";
         String itemSuffix = Config.ITEM_DESTROY_ENABLED.get() ? " and destroying " + itemsDestroyed + " item drop(s)" : "";
+        String inventorySuffix = Config.INVENTORY_ITEM_DESTROY_ENABLED.get()
+            ? " (" + inventoryItemsDestroyed + " item(s) removed from player inventories)" : "";
         broadcastMessage(server, "[ColorApocalypse] " + color.getName() + " eliminated! Destroying its blocks across "
-            + chunkCount + " chunk(s)" + mobSuffix + itemSuffix + "...");
+            + chunkCount + " chunk(s)" + mobSuffix + itemSuffix + inventorySuffix + "...");
     }
 
     private static void broadcastMessage(MinecraftServer server, String message) {
