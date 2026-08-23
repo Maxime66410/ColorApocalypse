@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.Colorapocalypse;
@@ -97,7 +98,8 @@ public final class DestructionQueue {
                     pos.set(baseX + x, y, baseZ + z);
                     BlockState state = level.getBlockState(pos);
                     if (!state.isAir() && targetBlocks.contains(state.getBlock())) {
-                        level.removeBlock(pos, false);
+                        // That's better for water and lava
+                        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                     }
                 }
             }
