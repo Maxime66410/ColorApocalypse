@@ -1,17 +1,11 @@
 package org.furranystudio.colorapocalypse.timer;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.Config;
-import org.furranystudio.colorapocalypse.color.ColorPoolData;
-import org.furranystudio.colorapocalypse.color.DestructionQueue;
 
-import java.util.concurrent.ThreadLocalRandom;
-
-/** Draws a color (manually or on a difficulty-based timer) and kicks off its destruction. */
+/** Kicks off {@link RouletteSequence} manually or on a difficulty-based timer. */
 public final class AutoTrigger {
 
     private static final int TICKS_PER_MINUTE = 20 * 60;
@@ -25,22 +19,13 @@ public final class AutoTrigger {
         TickEvent.ServerTickEvent.Post.BUS.addListener(event -> tick(event.server()));
     }
 
-    /** Draws a color right now and broadcasts the result. Returns null if the pool is empty. */
-    public static DyeColor draw(MinecraftServer server) {
-        ColorPoolData pool = server.overworld().getDataStorage().computeIfAbsent(ColorPoolData.TYPE);
-        DyeColor color = pool.draw(ThreadLocalRandom.current());
-
-        if (color == null) {
-            broadcast(server, "[ColorApocalypse] No colors left in the pool. Use /colorapocalypse reset to refill it.");
-            return null;
+    /** Starts the roulette sequence right now. Returns false if it couldn't start (already running, empty pool). */
+    public static boolean trigger(MinecraftServer server) {
+        boolean started = RouletteSequence.start(server);
+        if (started) {
+            scheduleNext(server);
         }
-
-        int chunkCount = DestructionQueue.start(color, server);
-        broadcast(server, "[ColorApocalypse] " + color.getName() + " eliminated! Destroying its blocks across "
-            + chunkCount + " chunk(s)...");
-
-        scheduleNext(server);
-        return color;
+        return started;
     }
 
     /** Ticks remaining until the next automatic draw, or -1 if the timer is off right now. */
@@ -65,7 +50,7 @@ public final class AutoTrigger {
         }
 
         if (server.getTickCount() >= nextDrawTick) {
-            draw(server);
+            trigger(server);
         }
     }
 
@@ -81,9 +66,5 @@ public final class AutoTrigger {
             case NORMAL -> Config.NORMAL_INTERVAL_MINUTES.get();
             case HARD -> Config.HARD_INTERVAL_MINUTES.get();
         };
-    }
-
-    private static void broadcast(MinecraftServer server, String message) {
-        server.getPlayerList().broadcastSystemMessage(Component.literal(message), false);
     }
 }

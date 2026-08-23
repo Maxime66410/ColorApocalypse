@@ -46,7 +46,7 @@ public final class ColorApocalypseCommand {
     }
 
     private static int runStart(CommandContext<CommandSourceStack> context) {
-        return AutoTrigger.draw(context.getSource().getServer()) != null ? 1 : 0;
+        return AutoTrigger.trigger(context.getSource().getServer()) ? 1 : 0;
     }
 
     private static int runStatus(CommandContext<CommandSourceStack> context) {

@@ -11,6 +11,7 @@ import org.furranystudio.colorapocalypse.color.ColorBlockRegistry;
 import org.furranystudio.colorapocalypse.color.DestructionQueue;
 import org.furranystudio.colorapocalypse.command.ColorApocalypseCommand;
 import org.furranystudio.colorapocalypse.timer.AutoTrigger;
+import org.furranystudio.colorapocalypse.timer.RouletteSequence;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -28,6 +29,7 @@ public class Colorapocalypse {
         ColorApocalypseCommand.register();
         DestructionQueue.register();
         AutoTrigger.register();
+        RouletteSequence.register();
 
         FMLCommonSetupEvent.getBus(context.getModBusGroup()).addListener(this::commonSetup);
     }
