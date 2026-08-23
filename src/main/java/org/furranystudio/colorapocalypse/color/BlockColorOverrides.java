@@ -1,0 +1,81 @@
+package org.furranystudio.colorapocalypse.color;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import net.minecraft.world.item.DyeColor;
+import org.furranystudio.colorapocalypse.Colorapocalypse;
+
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Loads the hand-maintained {@code /colorapocalypse/block_colors.json} resource, which is the
+ * authoritative source for block-to-color assignments: whatever it lists for a block wins over
+ * the {@link ColorBlockRegistry} MapColor-based guess. Anything not listed there falls back to
+ * that guess. Meant to be edited by hand to fix misclassifications one block at a time.
+ */
+public final class BlockColorOverrides {
+
+    private static final String RESOURCE_PATH = "/colorapocalypse/block_colors.json";
+
+    private final Map<String, DyeColor> colorByBlockId;
+
+    private BlockColorOverrides(Map<String, DyeColor> colorByBlockId) {
+        this.colorByBlockId = colorByBlockId;
+    }
+
+    public static BlockColorOverrides load() {
+        Map<String, DyeColor> byBlockId = new HashMap<>();
+
+        try (InputStreamReader stream = openResource()) {
+            if (stream == null) {
+                Colorapocalypse.LOGGER.warn("[ColorApocalypse] {} not found, using MapColor guesses only.", RESOURCE_PATH);
+                return new BlockColorOverrides(byBlockId);
+            }
+
+            Gson gson = new Gson();
+            Map<String, List<String>> raw = gson.fromJson(stream, new TypeToken<Map<String, List<String>>>() {}.getType());
+
+            for (Map.Entry<String, List<String>> entry : raw.entrySet()) {
+                DyeColor color = parseDyeColor(entry.getKey());
+                if (color == null) {
+                    Colorapocalypse.LOGGER.warn("[ColorApocalypse] Unknown color key '{}' in {}, ignoring.", entry.getKey(), RESOURCE_PATH);
+                    continue;
+                }
+                for (String blockId : entry.getValue()) {
+                    byBlockId.put(blockId, color);
+                }
+            }
+        } catch (Exception e) {
+            Colorapocalypse.LOGGER.error("[ColorApocalypse] Failed to load {}, using MapColor guesses only.", RESOURCE_PATH, e);
+            return new BlockColorOverrides(new HashMap<>());
+        }
+
+        return new BlockColorOverrides(byBlockId);
+    }
+
+    public DyeColor get(String blockId) {
+        return colorByBlockId.get(blockId);
+    }
+
+    public boolean contains(String blockId) {
+        return colorByBlockId.containsKey(blockId);
+    }
+
+    private static InputStreamReader openResource() {
+        var stream = BlockColorOverrides.class.getResourceAsStream(RESOURCE_PATH);
+        return stream == null ? null : new InputStreamReader(stream, StandardCharsets.UTF_8);
+    }
+
+    private static DyeColor parseDyeColor(String name) {
+        for (DyeColor color : DyeColor.values()) {
+            if (color.getName().equals(name)) {
+                return color;
+            }
+        }
+        return null;
+    }
+}
