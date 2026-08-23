@@ -32,6 +32,7 @@ public final class ColorBlockRegistry {
         .resolve("colorapocalypse").resolve("cache").resolve("block_color_report.txt");
 
     private static final Map<DyeColor, List<Block>> BLOCKS_BY_COLOR = new EnumMap<>(DyeColor.class);
+    private static final Map<Block, DyeColor> COLOR_BY_BLOCK = new LinkedHashMap<>();
 
     private ColorBlockRegistry() {
     }
@@ -61,15 +62,14 @@ public final class ColorBlockRegistry {
             String blockId = String.valueOf(ForgeRegistries.BLOCKS.getKey(block));
 
             DyeColor override = overrides.get(blockId);
+            DyeColor finalColor = override != null ? override : guessed;
             if (override == null) {
                 newBlocks.put(blockId, guessed);
-                BLOCKS_BY_COLOR.get(guessed).add(block);
-            } else {
-                if (override != guessed) {
-                    divergences.put(blockId, "json=" + override.getName() + ", guess=" + guessed.getName());
-                }
-                BLOCKS_BY_COLOR.get(override).add(block);
+            } else if (override != guessed) {
+                divergences.put(blockId, "json=" + override.getName() + ", guess=" + guessed.getName());
             }
+            BLOCKS_BY_COLOR.get(finalColor).add(block);
+            COLOR_BY_BLOCK.put(block, finalColor);
         }
 
         writeReport(newBlocks, divergences);
@@ -77,6 +77,10 @@ public final class ColorBlockRegistry {
 
     public static List<Block> getBlocksFor(DyeColor color) {
         return BLOCKS_BY_COLOR.getOrDefault(color, List.of());
+    }
+
+    public static DyeColor getColorFor(Block block) {
+        return COLOR_BY_BLOCK.get(block);
     }
 
     public static Map<DyeColor, List<Block>> getAll() {

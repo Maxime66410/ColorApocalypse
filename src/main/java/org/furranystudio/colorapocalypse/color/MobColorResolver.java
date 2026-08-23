@@ -41,10 +41,10 @@ public final class MobColorResolver {
             case Llama llama -> resolveLlamaColor(llama);
             case TropicalFish fish -> fish.getBaseColor();
             case Shulker shulker -> shulker.getColor() != null ? shulker.getColor() : DyeColor.PURPLE;
-            case Horse horse -> colorFromName(horse.getVariant().name());
-            case Rabbit rabbit -> colorFromName(rabbit.getVariant().name());
-            case Panda panda -> colorFromName(panda.getVariant().name());
-            case Parrot parrot -> colorFromName(parrot.getVariant().name());
+            case Horse horse -> DyeColorNames.firstMatch(horse.getVariant().name());
+            case Rabbit rabbit -> DyeColorNames.firstMatch(rabbit.getVariant().name());
+            case Panda panda -> DyeColorNames.firstMatch(panda.getVariant().name());
+            case Parrot parrot -> DyeColorNames.firstMatch(parrot.getVariant().name());
             case Cat cat -> colorFromHolder(cat.getVariant());
             case Cow cow -> colorFromHolder(cow.getVariant());
             case Frog frog -> colorFromHolder(frog.getVariant());
@@ -53,18 +53,7 @@ public final class MobColorResolver {
     }
 
     private static DyeColor colorFromHolder(Holder<?> variant) {
-        return variant.unwrapKey().map(key -> colorFromName(key.identifier().getPath())).orElse(null);
-    }
-
-    private static DyeColor colorFromName(String name) {
-        for (String token : name.split("_")) {
-            for (DyeColor color : DyeColor.values()) {
-                if (color.getName().equalsIgnoreCase(token)) {
-                    return color;
-                }
-            }
-        }
-        return null;
+        return variant.unwrapKey().map(key -> DyeColorNames.firstMatch(key.identifier().getPath())).orElse(null);
     }
 
     private static DyeColor resolveLlamaColor(Llama llama) {

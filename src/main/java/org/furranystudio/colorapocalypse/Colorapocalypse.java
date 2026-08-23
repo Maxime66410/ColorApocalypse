@@ -13,6 +13,7 @@ import org.furranystudio.colorapocalypse.client.ClientRouletteState;
 import org.furranystudio.colorapocalypse.client.RouletteBarLayer;
 import org.furranystudio.colorapocalypse.color.ColorBlockRegistry;
 import org.furranystudio.colorapocalypse.color.DestructionQueue;
+import org.furranystudio.colorapocalypse.color.ItemColorReport;
 import org.furranystudio.colorapocalypse.command.ColorApocalypseCommand;
 import org.furranystudio.colorapocalypse.network.ModNetworking;
 import org.furranystudio.colorapocalypse.timer.AutoTrigger;
@@ -53,5 +54,7 @@ public class Colorapocalypse {
             List<Block> blocks = ColorBlockRegistry.getBlocksFor(color);
             LOGGER.info(" - {} ({} blocks): {}", color.getName(), blocks.size(), blocks);
         }
+
+        ItemColorReport.write();
     }
 }

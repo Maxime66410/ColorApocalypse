@@ -20,6 +20,10 @@ public class Config {
             .comment("Whether mobs of the eliminated color are killed alongside its blocks.")
             .define("mobKillEnabled", true);
 
+    public static final ForgeConfigSpec.BooleanValue ITEM_DESTROY_ENABLED = BUILDER
+            .comment("Whether item drops of the eliminated color are destroyed alongside its blocks.")
+            .define("itemDestroyEnabled", true);
+
     public static final ForgeConfigSpec.IntValue EASY_INTERVAL_MINUTES = BUILDER
             .comment("Minutes between automatic draws on Easy.")
             .defineInRange("easyIntervalMinutes", 12, 1, 1440);
@@ -38,6 +42,7 @@ public class Config {
         SettingsRegistry.register("destructionRadius", new IntSetting(DESTRUCTION_RADIUS, 1, 32));
         SettingsRegistry.register("autoTimerEnabled", new BoolSetting(AUTO_TIMER_ENABLED));
         SettingsRegistry.register("mobKillEnabled", new BoolSetting(MOB_KILL_ENABLED));
+        SettingsRegistry.register("itemDestroyEnabled", new BoolSetting(ITEM_DESTROY_ENABLED));
         SettingsRegistry.register("easyIntervalMinutes", new IntSetting(EASY_INTERVAL_MINUTES, 1, 1440));
         SettingsRegistry.register("normalIntervalMinutes", new IntSetting(NORMAL_INTERVAL_MINUTES, 1, 1440));
         SettingsRegistry.register("hardIntervalMinutes", new IntSetting(HARD_INTERVAL_MINUTES, 1, 1440));
