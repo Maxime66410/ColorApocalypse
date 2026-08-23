@@ -14,6 +14,8 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.color.ColorPoolData;
 import org.furranystudio.colorapocalypse.color.DestructionQueue;
+import org.furranystudio.colorapocalypse.network.ModNetworking;
+import org.furranystudio.colorapocalypse.network.RouletteSpinPacket;
 import org.furranystudio.colorapocalypse.sound.ModSounds;
 import org.furranystudio.colorapocalypse.sound.SoundBroadcaster;
 
@@ -38,6 +40,7 @@ public final class RouletteSequence {
     private static int ticksInPhase;
     private static int secondsLeft;
     private static int nextSpinTickAt;
+    private static DyeColor drawnColor;
 
     private RouletteSequence() {
     }
@@ -108,6 +111,14 @@ public final class RouletteSequence {
     }
 
     private static void beginSpin(MinecraftServer server) {
+        ColorPoolData pool = server.overworld().getDataStorage().computeIfAbsent(ColorPoolData.TYPE);
+        drawnColor = pool.draw(ThreadLocalRandom.current());
+        if (drawnColor == null) {
+            broadcastMessage(server, "[ColorApocalypse] No colors left in the pool. Use /colorapocalypse reset to refill it.");
+            activeServer = null;
+            return;
+        }
+
         phase = Phase.SPINNING;
         ticksInPhase = 0;
         nextSpinTickAt = 0;
@@ -117,6 +128,7 @@ public final class RouletteSequence {
         players.broadcastAll(new ClientboundSetTitleTextPacket(Component.literal("?")));
         players.broadcastAll(new ClientboundSetSubtitleTextPacket(Component.literal("The wheel is spinning...")));
         SoundBroadcaster.playToAll(server, ModSounds.ROULETTE_APPEAR, SoundSource.MASTER, 1f, 1f);
+        ModNetworking.sendToAll(new RouletteSpinPacket(drawnColor, SPIN_TICKS));
     }
 
     private static void tickSpin(MinecraftServer server) {
@@ -135,13 +147,7 @@ public final class RouletteSequence {
     }
 
     private static void reveal(MinecraftServer server) {
-        ColorPoolData pool = server.overworld().getDataStorage().computeIfAbsent(ColorPoolData.TYPE);
-        DyeColor color = pool.draw(ThreadLocalRandom.current());
-        if (color == null) {
-            broadcastMessage(server, "[ColorApocalypse] No colors left in the pool. Use /colorapocalypse reset to refill it.");
-            return;
-        }
-
+        DyeColor color = drawnColor;
         int chunkCount = DestructionQueue.start(color, server);
 
         PlayerList players = server.getPlayerList();
