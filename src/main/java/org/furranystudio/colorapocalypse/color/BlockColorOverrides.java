@@ -5,11 +5,12 @@ import com.google.gson.reflect.TypeToken;
 import net.minecraft.world.item.DyeColor;
 import org.furranystudio.colorapocalypse.Colorapocalypse;
 
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Loads the hand-maintained {@code /colorapocalypse/block_colors.json} resource, which is the
@@ -20,6 +21,8 @@ import java.util.Map;
 public final class BlockColorOverrides {
 
     private static final String RESOURCE_PATH = "/colorapocalypse/block_colors.json";
+    // Strips /* ... */ block comments before parsing, since standard JSON (and Gson, even in lenient mode) doesn't support comments at all, or maybe i'm a dumb ?
+    private static final Pattern BLOCK_COMMENT = Pattern.compile("/\\*.*?\\*/", Pattern.DOTALL);
 
     private final Map<String, DyeColor> colorByBlockId;
 
@@ -30,14 +33,17 @@ public final class BlockColorOverrides {
     public static BlockColorOverrides load() {
         Map<String, DyeColor> byBlockId = new HashMap<>();
 
-        try (InputStreamReader stream = openResource()) {
+        try (InputStream stream = openResource()) {
             if (stream == null) {
                 Colorapocalypse.LOGGER.warn("[ColorApocalypse] {} not found, using MapColor guesses only.", RESOURCE_PATH);
                 return new BlockColorOverrides(byBlockId);
             }
 
+            String json = new String(stream.readAllBytes(), StandardCharsets.UTF_8);
+            json = BLOCK_COMMENT.matcher(json).replaceAll("");
+
             Gson gson = new Gson();
-            Map<String, List<String>> raw = gson.fromJson(stream, new TypeToken<Map<String, List<String>>>() {}.getType());
+            Map<String, List<String>> raw = gson.fromJson(json, new TypeToken<Map<String, List<String>>>() {}.getType());
 
             for (Map.Entry<String, List<String>> entry : raw.entrySet()) {
                 DyeColor color = parseDyeColor(entry.getKey());
@@ -65,9 +71,8 @@ public final class BlockColorOverrides {
         return colorByBlockId.containsKey(blockId);
     }
 
-    private static InputStreamReader openResource() {
-        var stream = BlockColorOverrides.class.getResourceAsStream(RESOURCE_PATH);
-        return stream == null ? null : new InputStreamReader(stream, StandardCharsets.UTF_8);
+    private static InputStream openResource() {
+        return BlockColorOverrides.class.getResourceAsStream(RESOURCE_PATH);
     }
 
     private static DyeColor parseDyeColor(String name) {

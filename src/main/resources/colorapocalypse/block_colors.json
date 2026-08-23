@@ -1,12 +1,11 @@
 {
+  /* Thanks to https://www.gamergeeks.net/apps/minecraft/list-of/colored-blocks and https://blockcolors.app for help with classifying block colors. */
   "white": [
     "minecraft:diorite",
     "minecraft:polished_diorite",
     "minecraft:birch_planks",
     "minecraft:cherry_planks",
     "minecraft:pale_oak_planks",
-    "minecraft:sand",
-    "minecraft:suspicious_sand",
     "minecraft:birch_log",
     "minecraft:cherry_log",
     "minecraft:pale_oak_log",
@@ -100,7 +99,9 @@
     "minecraft:calcite",
     "minecraft:powder_snow",
     "minecraft:raw_iron_block",
-    "minecraft:ochre_froglight"
+    "minecraft:ochre_froglight",
+    "minecraft:white_banner",
+    "minecraft:white_wall_banner"
   ],
   "orange": [
     "minecraft:acacia_planks",
@@ -181,7 +182,9 @@
     "minecraft:lightning_rod",
     "minecraft:waxed_lightning_rod",
     "minecraft:raw_copper_block",
-    "minecraft:open_eyeblossom"
+    "minecraft:open_eyeblossom",
+    "minecraft:orange_banner",
+    "minecraft:orange_wall_banner"
   ],
   "magenta": [
     "minecraft:magenta_bed",
@@ -196,7 +199,9 @@
     "minecraft:magenta_glazed_terracotta",
     "minecraft:magenta_concrete",
     "minecraft:magenta_concrete_powder",
-    "minecraft:magenta_candle"
+    "minecraft:magenta_candle",
+    "minecraft:magenta_banner",
+    "minecraft:magenta_wall_banner"
   ],
   "light_blue": [
     "minecraft:lapis_block",
@@ -213,7 +218,9 @@
     "minecraft:light_blue_concrete",
     "minecraft:light_blue_concrete_powder",
     "minecraft:blue_ice",
-    "minecraft:light_blue_candle"
+    "minecraft:light_blue_candle",
+    "minecraft:light_blue_banner",
+    "minecraft:light_blue_wall_banner"
   ],
   "yellow": [
     "minecraft:bamboo_planks",
@@ -271,7 +278,11 @@
     "minecraft:sulfur_brick_wall",
     "minecraft:chiseled_sulfur",
     "minecraft:sulfur_spike",
-    "minecraft:raw_gold_block"
+    "minecraft:raw_gold_block",
+    "minecraft:yellow_banner",
+    "minecraft:yellow_wall_banner",
+    "minecraft:sand",
+    "minecraft:suspicious_sand"
   ],
   "lime": [
     "minecraft:oak_sapling",
@@ -353,7 +364,9 @@
     "minecraft:big_dripleaf",
     "minecraft:big_dripleaf_stem",
     "minecraft:small_dripleaf",
-    "minecraft:firefly_bush"
+    "minecraft:firefly_bush",
+    "minecraft:lime_banner",
+    "minecraft:lime_wall_banner"
   ],
   "pink": [
     "minecraft:cherry_sapling",
@@ -373,7 +386,9 @@
     "minecraft:brain_coral_fan",
     "minecraft:brain_coral_wall_fan",
     "minecraft:pink_candle",
-    "minecraft:pearlescent_froglight"
+    "minecraft:pearlescent_froglight",
+    "minecraft:pink_banner",
+    "minecraft:pink_wall_banner"
   ],
   "gray": [
     "minecraft:stone",
@@ -503,7 +518,9 @@
     "minecraft:reinforced_deepslate",
     "minecraft:crafter",
     "minecraft:trial_spawner",
-    "minecraft:vault"
+    "minecraft:vault",
+    "minecraft:gray_banner",
+    "minecraft:gray_wall_banner"
   ],
   "light_gray": [
     "minecraft:pale_oak_sapling",
@@ -555,7 +572,9 @@
     "minecraft:pale_moss_block",
     "minecraft:pale_moss_carpet",
     "minecraft:pale_hanging_moss",
-    "minecraft:closed_eyeblossom"
+    "minecraft:closed_eyeblossom",
+    "minecraft:light_gray_banner",
+    "minecraft:light_gray_wall_banner"
   ],
   "cyan": [
     "minecraft:cyan_bed",
@@ -653,7 +672,9 @@
     "minecraft:oxidized_lightning_rod",
     "minecraft:waxed_weathered_lightning_rod",
     "minecraft:waxed_oxidized_lightning_rod",
-    "minecraft:verdant_froglight"
+    "minecraft:verdant_froglight",
+    "minecraft:cyan_banner",
+    "minecraft:cyan_wall_banner"
   ],
   "purple": [
     "minecraft:purple_bed",
@@ -679,7 +700,10 @@
     "minecraft:amethyst_cluster",
     "minecraft:large_amethyst_bud",
     "minecraft:medium_amethyst_bud",
-    "minecraft:small_amethyst_bud"
+    "minecraft:small_amethyst_bud",
+    "minecraft:purple_shulker_box",
+    "minecraft:purple_banner",
+    "minecraft:purple_wall_banner"
   ],
   "blue": [
     "minecraft:water",
@@ -701,11 +725,11 @@
     "minecraft:tube_coral_wall_fan",
     "minecraft:bubble_column",
     "minecraft:blue_candle",
-    "minecraft:frogspawn"
+    "minecraft:frogspawn",
+    "minecraft:blue_banner",
+    "minecraft:blue_wall_banner"
   ],
   "brown": [
-    "minecraft:granite",
-    "minecraft:polished_granite",
     "minecraft:dirt",
     "minecraft:coarse_dirt",
     "minecraft:podzol",
@@ -793,38 +817,6 @@
     "minecraft:black_terracotta",
     "minecraft:dark_oak_stairs",
     "minecraft:brown_carpet",
-    "minecraft:white_banner",
-    "minecraft:orange_banner",
-    "minecraft:magenta_banner",
-    "minecraft:light_blue_banner",
-    "minecraft:yellow_banner",
-    "minecraft:lime_banner",
-    "minecraft:pink_banner",
-    "minecraft:gray_banner",
-    "minecraft:light_gray_banner",
-    "minecraft:cyan_banner",
-    "minecraft:purple_banner",
-    "minecraft:blue_banner",
-    "minecraft:brown_banner",
-    "minecraft:green_banner",
-    "minecraft:red_banner",
-    "minecraft:black_banner",
-    "minecraft:white_wall_banner",
-    "minecraft:orange_wall_banner",
-    "minecraft:magenta_wall_banner",
-    "minecraft:light_blue_wall_banner",
-    "minecraft:yellow_wall_banner",
-    "minecraft:lime_wall_banner",
-    "minecraft:pink_wall_banner",
-    "minecraft:gray_wall_banner",
-    "minecraft:light_gray_wall_banner",
-    "minecraft:cyan_wall_banner",
-    "minecraft:purple_wall_banner",
-    "minecraft:blue_wall_banner",
-    "minecraft:brown_wall_banner",
-    "minecraft:green_wall_banner",
-    "minecraft:red_wall_banner",
-    "minecraft:black_wall_banner",
     "minecraft:oak_slab",
     "minecraft:spruce_slab",
     "minecraft:jungle_slab",
@@ -846,11 +838,6 @@
     "minecraft:brown_concrete",
     "minecraft:brown_concrete_powder",
     "minecraft:bamboo_sapling",
-    "minecraft:polished_granite_stairs",
-    "minecraft:granite_stairs",
-    "minecraft:polished_granite_slab",
-    "minecraft:granite_slab",
-    "minecraft:granite_wall",
     "minecraft:mud_brick_wall",
     "minecraft:loom",
     "minecraft:barrel",
@@ -905,7 +892,9 @@
     "minecraft:pointed_dripstone",
     "minecraft:leaf_litter",
     "minecraft:hanging_roots",
-    "minecraft:rooted_dirt"
+    "minecraft:rooted_dirt",
+    "minecraft:brown_banner",
+    "minecraft:brown_wall_banner"
   ],
   "green": [
     "minecraft:grass_block",
@@ -926,7 +915,9 @@
     "minecraft:sea_pickle",
     "minecraft:green_candle",
     "minecraft:moss_carpet",
-    "minecraft:moss_block"
+    "minecraft:moss_block",
+    "minecraft:green_banner",
+    "minecraft:green_wall_banner"
   ],
   "red": [
     "minecraft:mangrove_planks",
@@ -980,7 +971,6 @@
     "minecraft:magma_block",
     "minecraft:nether_wart_block",
     "minecraft:red_nether_bricks",
-    "minecraft:purple_shulker_box",
     "minecraft:red_shulker_box",
     "minecraft:red_glazed_terracotta",
     "minecraft:red_concrete",
@@ -1033,7 +1023,16 @@
     "minecraft:cinnabar_brick_stairs",
     "minecraft:cinnabar_brick_wall",
     "minecraft:chiseled_cinnabar",
-    "minecraft:decorated_pot"
+    "minecraft:decorated_pot",
+    "minecraft:red_banner",
+    "minecraft:red_wall_banner",
+    "minecraft:granite",
+    "minecraft:polished_granite",
+    "minecraft:polished_granite_stairs",
+    "minecraft:granite_stairs",
+    "minecraft:polished_granite_slab",
+    "minecraft:granite_slab",
+    "minecraft:granite_wall"
   ],
   "black": [
     "minecraft:black_bed",
@@ -1076,6 +1075,8 @@
     "minecraft:sculk_vein",
     "minecraft:sculk_catalyst",
     "minecraft:sculk_shrieker",
-    "minecraft:smooth_basalt"
+    "minecraft:smooth_basalt",
+    "minecraft:black_banner",
+    "minecraft:black_wall_banner"
   ]
 }
