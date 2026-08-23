@@ -12,12 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-/**
- * Loads the hand-maintained {@code /colorapocalypse/block_colors.json} resource, which is the
- * authoritative source for block-to-color assignments: whatever it lists for a block wins over
- * the {@link ColorBlockRegistry} MapColor-based guess. Anything not listed there falls back to
- * that guess. Meant to be edited by hand to fix misclassifications one block at a time.
- */
+/** Loads {@code block_colors.json} — the hand-edited overrides that win over the MapColor guess. */
 public final class BlockColorOverrides {
 
     private static final String RESOURCE_PATH = "/colorapocalypse/block_colors.json";

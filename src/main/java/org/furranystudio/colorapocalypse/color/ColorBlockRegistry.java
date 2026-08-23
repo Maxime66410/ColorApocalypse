@@ -22,15 +22,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Buckets every registered block into a {@link DyeColor}. The primary source is
- * {@code /colorapocalypse/block_colors.json}, a hand-maintained file meant to be edited directly
- * to fix misclassifications. Any block it doesn't list falls back to a guess based on the
- * block's declared {@link MapColor} (nearest {@link DyeColor} by hue/saturation/value), so
- * naturally/biome-colored blocks like grass or leaves still get a reasonable default without
- * anyone having to list every block by hand.
- * <p>
- * Built once, at mod setup, from a full registry scan. Also writes a report of new/divergent
- * blocks to the game directory, so the JSON file can be kept up to date over time.
+ * Buckets every block into a {@link DyeColor}. {@code block_colors.json} wins when it lists a
+ * block; otherwise falls back to a {@link MapColor}-based guess. Writes a report of new/divergent
+ * blocks so the JSON can be kept up to date.
  */
 public final class ColorBlockRegistry {
 
@@ -121,15 +115,13 @@ public final class ColorBlockRegistry {
         try {
             return block.defaultBlockState().getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
         } catch (Exception e) {
-            // A handful of blocks compute their MapColor from real level/neighbor data and
-            // can't be resolved outside a world; just skip them rather than crashing setup.
+            // some blocks need real level/neighbor data for this - just skip them
             return null;
         }
     }
 
-    // Hue only matters once a color actually carries some saturation; weighting it by
-    // saturation (instead of comparing raw RGB) is what keeps neutral grays away from
-    // saturated hues, and keeps dark-but-vivid colors (like foliage) away from black.
+    // weighting hue by saturation keeps grays away from saturated colors, and dark
+    // colors (foliage) away from black
     private static final double HUE_WEIGHT = 6.0;
     private static final double SATURATION_WEIGHT = 0.5;
     private static final double VALUE_WEIGHT = 0.5;

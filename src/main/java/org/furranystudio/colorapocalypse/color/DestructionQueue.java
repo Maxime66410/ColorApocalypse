@@ -9,6 +9,8 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.chunk.LevelChunkSection;
 import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.Colorapocalypse;
 import org.furranystudio.colorapocalypse.Config;
@@ -19,18 +21,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Destroys the blocks of an eliminated color, restricted to currently loaded chunks within
- * {@link Config#DESTRUCTION_RADIUS} of each online player (computed once, when {@link #start}
- * is called). All the actual world mutation happens on the main server thread — level writes
- * aren't thread-safe — but spread across ticks so a large area doesn't freeze the server in a
- * single tick.
+ * Destroys the blocks of an eliminated color within {@link Config#DESTRUCTION_RADIUS} of each
+ * online player. Spread across ticks (time-budgeted, main thread only) and skips whole empty
+ * chunk sections instead of scanning every block.
  */
 public final class DestructionQueue {
 
-    private static final int CHUNKS_PER_TICK = 4;
+    private static final long TIME_BUDGET_NANOS = 8_000_000L; // 8ms/tick
 
     private static final Deque<PendingChunk> QUEUE = new ArrayDeque<>();
     private static Set<Block> targetBlocks = Set.of();
+
+    private static PendingChunk currentChunk;
+    private static ChunkAccess currentChunkAccess;
+    private static int cursorSectionY;
+    private static boolean sectionEntered;
+    private static int cursorX;
+    private static int cursorYLocal;
+    private static int cursorZ;
 
     private DestructionQueue() {
     }
@@ -40,7 +48,7 @@ public final class DestructionQueue {
     }
 
     public static boolean isActive() {
-        return !QUEUE.isEmpty();
+        return currentChunk != null || !QUEUE.isEmpty();
     }
 
     /**
@@ -53,6 +61,7 @@ public final class DestructionQueue {
         targetBlocks = new HashSet<>(ColorBlockRegistry.getBlocksFor(color));
 
         QUEUE.clear();
+        currentChunk = null;
         int radius = Config.DESTRUCTION_RADIUS.get();
 
         for (ServerLevel level : server.getAllLevels()) {
@@ -71,39 +80,101 @@ public final class DestructionQueue {
     }
 
     private static void tick() {
-        if (QUEUE.isEmpty()) {
+        if (!isActive()) {
             return;
         }
 
-        for (int i = 0; i < CHUNKS_PER_TICK && !QUEUE.isEmpty(); i++) {
-            processChunk(QUEUE.poll());
+        long deadline = System.nanoTime() + TIME_BUDGET_NANOS;
+        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+
+        while (System.nanoTime() < deadline) {
+            if (currentChunk == null) {
+                if (!startNextChunk()) {
+                    break; // queue empty, nothing left to do
+                }
+                continue;
+            }
+
+            if (!sectionEntered && !enterNextSection()) {
+                continue; // chunk finished, or section skipped - loop back around
+            }
+
+            processPosition(pos);
+            advancePositionCursor();
         }
 
-        if (QUEUE.isEmpty()) {
+        if (!isActive()) {
             Colorapocalypse.LOGGER.info("[ColorApocalypse] Destruction complete.");
         }
     }
 
-    private static void processChunk(PendingChunk chunk) {
-        ServerLevel level = chunk.level();
-        int baseX = chunk.chunkX() << 4;
-        int baseZ = chunk.chunkZ() << 4;
-        int minY = level.getMinY();
-        int height = level.getHeight();
-
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-        for (int x = 0; x < 16; x++) {
-            for (int z = 0; z < 16; z++) {
-                for (int y = minY; y < minY + height; y++) {
-                    pos.set(baseX + x, y, baseZ + z);
-                    BlockState state = level.getBlockState(pos);
-                    if (!state.isAir() && targetBlocks.contains(state.getBlock())) {
-                        // That's better for water and lava
-                        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
-                    }
-                }
-            }
+    private static boolean startNextChunk() {
+        currentChunk = QUEUE.poll();
+        if (currentChunk == null) {
+            return false;
         }
+        currentChunkAccess = currentChunk.level().getChunk(currentChunk.chunkX(), currentChunk.chunkZ());
+        cursorSectionY = currentChunk.level().getMinSectionY();
+        sectionEntered = false;
+        return true;
+    }
+
+    /** True once positioned at a section worth scanning; false if skipped or chunk is done. */
+    private static boolean enterNextSection() {
+        ServerLevel level = currentChunk.level();
+        if (cursorSectionY > level.getMaxSectionY()) {
+            currentChunk = null;
+            currentChunkAccess = null;
+            return false;
+        }
+
+        LevelChunkSection section = currentChunkAccess.getSection(level.getSectionIndexFromSectionY(cursorSectionY));
+        if (section.hasOnlyAir() || !section.maybeHas(state -> targetBlocks.contains(state.getBlock()))) {
+            cursorSectionY++;
+            return false;
+        }
+
+        cursorX = 0;
+        cursorZ = 0;
+        cursorYLocal = 0;
+        sectionEntered = true;
+        return true;
+    }
+
+    private static void processPosition(BlockPos.MutableBlockPos pos) {
+        ServerLevel level = currentChunk.level();
+        pos.set(
+            (currentChunk.chunkX() << 4) + cursorX,
+            (cursorSectionY << 4) + cursorYLocal,
+            (currentChunk.chunkZ() << 4) + cursorZ
+        );
+
+        BlockState state = level.getBlockState(pos);
+        if (!state.isAir() && targetBlocks.contains(state.getBlock())) {
+            // removeBlock() just puts the fluid back; setBlock+AIR actually clears it.
+            // Flag 2 skips neighbor updates (redstone, gravity...) - that cascade was the real lag source.
+            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+        }
+    }
+
+    private static void advancePositionCursor() {
+        cursorYLocal++;
+        if (cursorYLocal < 16) {
+            return;
+        }
+        cursorYLocal = 0;
+        cursorZ++;
+        if (cursorZ < 16) {
+            return;
+        }
+        cursorZ = 0;
+        cursorX++;
+        if (cursorX < 16) {
+            return;
+        }
+        // section done, move on to the next one
+        cursorSectionY++;
+        sectionEntered = false;
     }
 
     private record PendingChunk(ServerLevel level, int chunkX, int chunkZ) {
