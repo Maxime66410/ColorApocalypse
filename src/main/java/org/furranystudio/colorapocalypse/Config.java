@@ -30,15 +30,15 @@ public class Config {
 
     public static final ForgeConfigSpec.IntValue EASY_INTERVAL_MINUTES = BUILDER
             .comment("Minutes between automatic draws on Easy.")
-            .defineInRange("easyIntervalMinutes", 12, 1, 1440);
+            .defineInRange("easyIntervalMinutes", 5, 1, 1440);
 
     public static final ForgeConfigSpec.IntValue NORMAL_INTERVAL_MINUTES = BUILDER
             .comment("Minutes between automatic draws on Normal.")
-            .defineInRange("normalIntervalMinutes", 6, 1, 1440);
+            .defineInRange("normalIntervalMinutes", 3, 1, 1440);
 
     public static final ForgeConfigSpec.IntValue HARD_INTERVAL_MINUTES = BUILDER
             .comment("Minutes between automatic draws on Hard.")
-            .defineInRange("hardIntervalMinutes", 2, 1, 1440);
+            .defineInRange("hardIntervalMinutes", 1, 1, 1440);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
