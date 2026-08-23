@@ -7,14 +7,11 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.furranystudio.colorapocalypse.color.ColorBlockRegistry;
 import org.furranystudio.colorapocalypse.color.ColorPoolData;
+import org.furranystudio.colorapocalypse.color.DestructionQueue;
 import org.furranystudio.colorapocalypse.settings.SettingsRegistry;
 
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -56,16 +53,11 @@ public final class ColorApocalypseCommand {
             return 0;
         }
 
-        // DEBUG ONLY: no destruction system yet, this just verifies the color pool and the
-        // MapColor -> DyeColor classification by listing the blocks that would be destroyed.
-        // Nothing is actually destroyed here.
-        List<Block> blocks = ColorBlockRegistry.getBlocksFor(color);
-        StringBuilder message = new StringBuilder(
-            "[ColorApocalypse] (debug) Drew " + color.getName() + " (" + blocks.size() + " blocks):");
-        for (Block block : blocks) {
-            message.append("\n - ").append(ForgeRegistries.BLOCKS.getKey(block));
-        }
-        context.getSource().sendSuccess(() -> Component.literal(message.toString()), true);
+        int chunkCount = DestructionQueue.start(color, context.getSource().getServer());
+
+        context.getSource().sendSuccess(() -> Component.literal(
+            "[ColorApocalypse] " + color.getName() + " eliminated! Destroying its blocks across "
+                + chunkCount + " chunk(s)..."), true);
         return 1;
     }
 

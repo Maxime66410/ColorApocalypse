@@ -8,6 +8,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.furranystudio.colorapocalypse.color.ColorBlockRegistry;
+import org.furranystudio.colorapocalypse.color.DestructionQueue;
 import org.furranystudio.colorapocalypse.command.ColorApocalypseCommand;
 import org.slf4j.Logger;
 
@@ -24,6 +25,7 @@ public class Colorapocalypse {
         Config.registerSettings();
 
         ColorApocalypseCommand.register();
+        DestructionQueue.register();
 
         FMLCommonSetupEvent.getBus(context.getModBusGroup()).addListener(this::commonSetup);
     }

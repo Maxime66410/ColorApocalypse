@@ -101,7 +101,11 @@
     "minecraft:raw_iron_block",
     "minecraft:ochre_froglight",
     "minecraft:white_banner",
-    "minecraft:white_wall_banner"
+    "minecraft:white_wall_banner",
+    "minecraft:azure_bluet",
+    "minecraft:white_tulip",
+    "minecraft:oxeye_daisy",
+    "minecraft:lily_of_the_valley"
   ],
   "orange": [
     "minecraft:acacia_planks",
@@ -184,7 +188,9 @@
     "minecraft:raw_copper_block",
     "minecraft:open_eyeblossom",
     "minecraft:orange_banner",
-    "minecraft:orange_wall_banner"
+    "minecraft:orange_wall_banner",
+    "minecraft:orange_tulip",
+    "minecraft:torchflower"
   ],
   "magenta": [
     "minecraft:magenta_bed",
@@ -220,7 +226,8 @@
     "minecraft:blue_ice",
     "minecraft:light_blue_candle",
     "minecraft:light_blue_banner",
-    "minecraft:light_blue_wall_banner"
+    "minecraft:light_blue_wall_banner",
+    "minecraft:blue_orchid"
   ],
   "yellow": [
     "minecraft:bamboo_planks",
@@ -282,7 +289,10 @@
     "minecraft:yellow_banner",
     "minecraft:yellow_wall_banner",
     "minecraft:sand",
-    "minecraft:suspicious_sand"
+    "minecraft:suspicious_sand",
+    "minecraft:dandelion",
+    "minecraft:golden_dandelion",
+    "minecraft:sunflower"
   ],
   "lime": [
     "minecraft:oak_sapling",
@@ -306,21 +316,6 @@
     "minecraft:fern",
     "minecraft:bush",
     "minecraft:lime_wool",
-    "minecraft:dandelion",
-    "minecraft:golden_dandelion",
-    "minecraft:torchflower",
-    "minecraft:poppy",
-    "minecraft:blue_orchid",
-    "minecraft:allium",
-    "minecraft:azure_bluet",
-    "minecraft:red_tulip",
-    "minecraft:orange_tulip",
-    "minecraft:white_tulip",
-    "minecraft:pink_tulip",
-    "minecraft:oxeye_daisy",
-    "minecraft:cornflower",
-    "minecraft:wither_rose",
-    "minecraft:lily_of_the_valley",
     "minecraft:wheat",
     "minecraft:cactus",
     "minecraft:sugar_cane",
@@ -337,9 +332,6 @@
     "minecraft:carrots",
     "minecraft:potatoes",
     "minecraft:lime_carpet",
-    "minecraft:sunflower",
-    "minecraft:lilac",
-    "minecraft:rose_bush",
     "minecraft:peony",
     "minecraft:tall_grass",
     "minecraft:large_fern",
@@ -356,10 +348,8 @@
     "minecraft:lime_candle",
     "minecraft:cave_vines",
     "minecraft:cave_vines_plant",
-    "minecraft:spore_blossom",
     "minecraft:azalea",
     "minecraft:flowering_azalea",
-    "minecraft:pink_petals",
     "minecraft:wildflowers",
     "minecraft:big_dripleaf",
     "minecraft:big_dripleaf_stem",
@@ -388,7 +378,10 @@
     "minecraft:pink_candle",
     "minecraft:pearlescent_froglight",
     "minecraft:pink_banner",
-    "minecraft:pink_wall_banner"
+    "minecraft:pink_wall_banner",
+    "minecraft:pink_tulip",
+    "minecraft:pink_petals",
+    "minecraft:spore_blossom"
   ],
   "gray": [
     "minecraft:stone",
@@ -703,7 +696,9 @@
     "minecraft:small_amethyst_bud",
     "minecraft:purple_shulker_box",
     "minecraft:purple_banner",
-    "minecraft:purple_wall_banner"
+    "minecraft:purple_wall_banner",
+    "minecraft:allium",
+    "minecraft:lilac"
   ],
   "blue": [
     "minecraft:water",
@@ -727,7 +722,8 @@
     "minecraft:blue_candle",
     "minecraft:frogspawn",
     "minecraft:blue_banner",
-    "minecraft:blue_wall_banner"
+    "minecraft:blue_wall_banner",
+    "minecraft:cornflower"
   ],
   "brown": [
     "minecraft:dirt",
@@ -1032,7 +1028,10 @@
     "minecraft:granite_stairs",
     "minecraft:polished_granite_slab",
     "minecraft:granite_slab",
-    "minecraft:granite_wall"
+    "minecraft:granite_wall",
+    "minecraft:poppy",
+    "minecraft:red_tulip",
+    "minecraft:rose_bush"
   ],
   "black": [
     "minecraft:black_bed",
@@ -1077,6 +1076,7 @@
     "minecraft:sculk_shrieker",
     "minecraft:smooth_basalt",
     "minecraft:black_banner",
-    "minecraft:black_wall_banner"
+    "minecraft:black_wall_banner",
+    "minecraft:wither_rose"
   ]
 }
