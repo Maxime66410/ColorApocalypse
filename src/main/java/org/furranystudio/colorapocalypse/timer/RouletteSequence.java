@@ -123,6 +123,11 @@ public final class RouletteSequence {
             return;
         }
 
+        if (pool.getRemaining().isEmpty()) {
+            pool.reset();
+            broadcastMessage(server, "[ColorApocalypse] Every color has been eliminated! The pool refills and the apocalypse starts over.");
+        }
+
         phase = Phase.SPINNING;
         ticksInPhase = 0;
         nextSpinTickAt = 0;
