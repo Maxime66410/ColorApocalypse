@@ -11,9 +11,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.furranystudio.colorapocalypse.color.ColorBlockRegistry;
+import org.furranystudio.colorapocalypse.color.ColorPoolData;
 import org.furranystudio.colorapocalypse.settings.SettingsRegistry;
 
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 public final class ColorApocalypseCommand {
@@ -45,13 +47,19 @@ public final class ColorApocalypseCommand {
     }
 
     private static int runStart(CommandContext<CommandSourceStack> context) {
-        // DEBUG ONLY: no color pool / destruction system yet, this just verifies the
-        // MapColor -> DyeColor classification by picking a random color and listing the
-        // blocks that would be destroyed. Nothing is actually destroyed here.
-        DyeColor[] colors = DyeColor.values();
-        DyeColor color = colors[ThreadLocalRandom.current().nextInt(colors.length)];
-        List<Block> blocks = ColorBlockRegistry.getBlocksFor(color);
+        ColorPoolData pool = getPool(context);
+        DyeColor color = pool.draw(ThreadLocalRandom.current());
 
+        if (color == null) {
+            context.getSource().sendFailure(Component.literal(
+                "[ColorApocalypse] No colors left in the pool. Use /colorapocalypse reset to refill it."));
+            return 0;
+        }
+
+        // DEBUG ONLY: no destruction system yet, this just verifies the color pool and the
+        // MapColor -> DyeColor classification by listing the blocks that would be destroyed.
+        // Nothing is actually destroyed here.
+        List<Block> blocks = ColorBlockRegistry.getBlocksFor(color);
         StringBuilder message = new StringBuilder(
             "[ColorApocalypse] (debug) Drew " + color.getName() + " (" + blocks.size() + " blocks):");
         for (Block block : blocks) {
@@ -62,15 +70,29 @@ public final class ColorApocalypseCommand {
     }
 
     private static int runStatus(CommandContext<CommandSourceStack> context) {
-        // TODO: report time remaining until the next automatic draw once the timer exists, later too
-        context.getSource().sendSuccess(() -> Component.literal("[ColorApocalypse] status: not implemented yet."), true);
+        ColorPoolData pool = getPool(context);
+        Set<DyeColor> remaining = pool.getRemaining();
+
+        StringBuilder message = new StringBuilder(
+            "[ColorApocalypse] " + remaining.size() + "/" + DyeColor.values().length + " colors remaining:");
+        for (DyeColor color : DyeColor.values()) {
+            if (remaining.contains(color)) {
+                message.append(' ').append(color.getName());
+            }
+        }
+        // TODO: report time remaining until the next automatic draw once the timer exists
+        context.getSource().sendSuccess(() -> Component.literal(message.toString()), true);
         return 1;
     }
 
     private static int runReset(CommandContext<CommandSourceStack> context) {
-        // TODO: reset the color pool once it exists, wawa later ;)
-        context.getSource().sendSuccess(() -> Component.literal("[ColorApocalypse] reset: not implemented yet."), true);
+        getPool(context).reset();
+        context.getSource().sendSuccess(() -> Component.literal("[ColorApocalypse] Color pool reset."), true);
         return 1;
+    }
+
+    private static ColorPoolData getPool(CommandContext<CommandSourceStack> context) {
+        return context.getSource().getServer().overworld().getDataStorage().computeIfAbsent(ColorPoolData.TYPE);
     }
 
     private static int runSettingsList(CommandContext<CommandSourceStack> context) {
