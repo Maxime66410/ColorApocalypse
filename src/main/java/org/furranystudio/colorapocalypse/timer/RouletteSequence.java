@@ -9,22 +9,35 @@ import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
 import net.minecraft.network.protocol.game.ClientboundSetTitlesAnimationPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.players.PlayerList;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.color.ColorPoolData;
 import org.furranystudio.colorapocalypse.color.DestructionQueue;
+import org.furranystudio.colorapocalypse.sound.ModSounds;
+import org.furranystudio.colorapocalypse.sound.SoundBroadcaster;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-/** 10s title countdown, then reveals the drawn color (in its own color) and starts destruction. */
+/**
+ * The full roulette sequence: 10s title countdown ("it's coming") -> the roulette itself
+ * appears and spins for 5s -> it stops and reveals the drawn color (in its own color),
+ * which starts destruction.
+ */
 public final class RouletteSequence {
 
     private static final int COUNTDOWN_SECONDS = 10;
+    private static final int SPIN_SECONDS = 5;
     private static final int TICKS_PER_SECOND = 20;
+    private static final int SPIN_TICKS = SPIN_SECONDS * TICKS_PER_SECOND;
+
+    private enum Phase { COUNTDOWN, SPINNING }
 
     private static MinecraftServer activeServer;
-    private static int secondsLeft = -1;
-    private static int tickCounter;
+    private static Phase phase;
+    private static int ticksInPhase;
+    private static int secondsLeft;
+    private static int nextSpinTickAt;
 
     private RouletteSequence() {
     }
@@ -34,7 +47,7 @@ public final class RouletteSequence {
     }
 
     public static boolean isActive() {
-        return secondsLeft >= 0;
+        return activeServer != null;
     }
 
     /** Starts the countdown. Returns false if already running, or the pool is empty. */
@@ -50,8 +63,9 @@ public final class RouletteSequence {
         }
 
         activeServer = server;
+        phase = Phase.COUNTDOWN;
+        ticksInPhase = 0;
         secondsLeft = COUNTDOWN_SECONDS;
-        tickCounter = 0;
         showCountdown(server, secondsLeft);
         return true;
     }
@@ -60,19 +74,26 @@ public final class RouletteSequence {
         if (!isActive() || server != activeServer) {
             return;
         }
+        ticksInPhase++;
 
-        if (++tickCounter < TICKS_PER_SECOND) {
+        if (phase == Phase.COUNTDOWN) {
+            tickCountdown(server);
+        } else {
+            tickSpin(server);
+        }
+    }
+
+    private static void tickCountdown(MinecraftServer server) {
+        if (ticksInPhase < TICKS_PER_SECOND) {
             return;
         }
-        tickCounter = 0;
+        ticksInPhase = 0;
         secondsLeft--;
 
         if (secondsLeft > 0) {
             showCountdown(server, secondsLeft);
         } else {
-            reveal(server);
-            secondsLeft = -1;
-            activeServer = null;
+            beginSpin(server);
         }
     }
 
@@ -83,6 +104,34 @@ public final class RouletteSequence {
             Component.literal(String.valueOf(seconds)).withStyle(ChatFormatting.YELLOW)));
         players.broadcastAll(new ClientboundSetSubtitleTextPacket(
             Component.literal("The wheel is about to spin...")));
+        SoundBroadcaster.playToAll(server, ModSounds.COUNTDOWN_TICK, SoundSource.MASTER, 1f, 1f);
+    }
+
+    private static void beginSpin(MinecraftServer server) {
+        phase = Phase.SPINNING;
+        ticksInPhase = 0;
+        nextSpinTickAt = 0;
+
+        PlayerList players = server.getPlayerList();
+        players.broadcastAll(new ClientboundSetTitlesAnimationPacket(0, SPIN_TICKS, 5));
+        players.broadcastAll(new ClientboundSetTitleTextPacket(Component.literal("?")));
+        players.broadcastAll(new ClientboundSetSubtitleTextPacket(Component.literal("The wheel is spinning...")));
+        SoundBroadcaster.playToAll(server, ModSounds.ROULETTE_APPEAR, SoundSource.MASTER, 1f, 1f);
+    }
+
+    private static void tickSpin(MinecraftServer server) {
+        // ticks between spin sounds grow over time, simulating it slowing down
+        if (ticksInPhase >= nextSpinTickAt) {
+            float progress = (float) ticksInPhase / SPIN_TICKS;
+            nextSpinTickAt = ticksInPhase + 2 + Math.round(progress * 13);
+            float pitch = 0.8f + ThreadLocalRandom.current().nextFloat() * 0.7f;
+            SoundBroadcaster.playToAll(server, ModSounds.ROULETTE_SPIN_TICK, SoundSource.MASTER, 1f, pitch);
+        }
+
+        if (ticksInPhase >= SPIN_TICKS) {
+            reveal(server);
+            activeServer = null;
+        }
     }
 
     private static void reveal(MinecraftServer server) {
@@ -102,6 +151,7 @@ public final class RouletteSequence {
                 .withStyle(Style.EMPTY.withColor(TextColor.fromRgb(color.getTextColor())))));
         players.broadcastAll(new ClientboundSetSubtitleTextPacket(
             Component.literal("has been eliminated!")));
+        SoundBroadcaster.playToAll(server, ModSounds.ROULETTE_REVEAL, SoundSource.MASTER, 1f, 1f);
 
         broadcastMessage(server, "[ColorApocalypse] " + color.getName() + " eliminated! Destroying its blocks across "
             + chunkCount + " chunk(s)...");
