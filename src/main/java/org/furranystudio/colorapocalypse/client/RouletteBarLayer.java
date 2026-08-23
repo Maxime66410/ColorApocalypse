@@ -3,9 +3,11 @@ package org.furranystudio.colorapocalypse.client;
 import com.mojang.blaze3d.platform.Window;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.client.event.AddGuiOverlayLayersEvent;
 import net.minecraftforge.client.gui.overlay.ForgeLayeredDraw;
 import org.furranystudio.colorapocalypse.Colorapocalypse;
@@ -42,9 +44,13 @@ public final class RouletteBarLayer {
         Window window = Minecraft.getInstance().getWindow();
         int left = (window.getGuiScaledWidth() - WIDTH) / 2;
         int top = window.getGuiScaledHeight() - MARGIN_BOTTOM - HEIGHT;
-        int color = ClientRouletteState.getCurrentColor().getTextColor() | 0xFF000000;
+        DyeColor current = ClientRouletteState.getCurrentColor();
+        int color = current.getTextColor() | 0xFF000000;
 
         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BAR_BACKGROUND, left, top, WIDTH, HEIGHT);
         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BAR_PROGRESS, WIDTH, HEIGHT, 0, 0, left, top, WIDTH, HEIGHT, color);
+
+        Font font = Minecraft.getInstance().font;
+        graphics.centeredText(font, current.getName().toUpperCase(), window.getGuiScaledWidth() / 2, top - 12, color);
     }
 }

@@ -1,7 +1,12 @@
 package org.furranystudio.colorapocalypse.client;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.event.TickEvent;
+import org.furranystudio.colorapocalypse.timer.SpinTiming;
 
 import java.util.Random;
 
@@ -16,6 +21,7 @@ public final class ClientRouletteState {
     private static int durationTicks;
     private static int ticksElapsed;
     private static int nextChangeAt;
+    private static boolean landed;
     private static DyeColor currentColor = DyeColor.WHITE;
 
     private ClientRouletteState() {
@@ -30,7 +36,8 @@ public final class ClientRouletteState {
         durationTicks = Math.max(duration, 1);
         ticksElapsed = 0;
         nextChangeAt = 0;
-        currentColor = randomColor();
+        landed = false;
+        setCurrentColor(randomColor());
     }
 
     public static boolean isSpinning() {
@@ -47,22 +54,31 @@ public final class ClientRouletteState {
         }
         ticksElapsed++;
 
-        if (ticksElapsed >= durationTicks) {
-            // landed - just hold the final color until HOLD_TICKS runs out, no more changes
-            currentColor = targetColor;
+        if (landed || ticksElapsed < nextChangeAt) {
             return;
         }
 
-        // same growing-interval pacing as the server's spin-tick sound, so they line up
-        if (ticksElapsed >= nextChangeAt) {
-            float progress = (float) ticksElapsed / durationTicks;
-            nextChangeAt = ticksElapsed + 2 + Math.round(progress * 13);
-            currentColor = randomColor();
+        // SpinTiming is the same schedule the server uses for the spin-tick sound - sharing
+        // it is what keeps color changes and sound ticks from drifting apart. Once the next
+        // scheduled change would overshoot durationTicks, that change IS the real result -
+        // shown right when the natural slowdown gets there, no separate cutoff needed.
+        if (SpinTiming.isFinalChange(ticksElapsed, durationTicks)) {
+            setCurrentColor(targetColor);
+            landed = true;
+        } else {
+            nextChangeAt = SpinTiming.nextChangeAt(ticksElapsed, durationTicks);
+            setCurrentColor(randomColor());
         }
     }
 
     private static DyeColor randomColor() {
         DyeColor[] colors = DyeColor.values();
         return colors[RANDOM.nextInt(colors.length)];
+    }
+
+    private static void setCurrentColor(DyeColor color) {
+        currentColor = color;
+        Minecraft.getInstance().gui.hud.setTitle(Component.literal(color.getName().toUpperCase())
+            .withStyle(Style.EMPTY.withColor(TextColor.fromRgb(color.getTextColor()))));
     }
 }

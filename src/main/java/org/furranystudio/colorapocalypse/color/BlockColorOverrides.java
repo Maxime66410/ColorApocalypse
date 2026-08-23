@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-/** Loads {@code block_colors.json} — the hand-edited overrides that win over the MapColor guess. */
+/** Loads {@code block_colors.json} the hand-edited overrides that win over the MapColor guess. */
 public final class BlockColorOverrides {
 
     private static final String RESOURCE_PATH = "/colorapocalypse/block_colors.json";

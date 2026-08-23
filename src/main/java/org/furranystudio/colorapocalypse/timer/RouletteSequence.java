@@ -125,17 +125,15 @@ public final class RouletteSequence {
 
         PlayerList players = server.getPlayerList();
         players.broadcastAll(new ClientboundSetTitlesAnimationPacket(0, SPIN_TICKS, 5));
-        players.broadcastAll(new ClientboundSetTitleTextPacket(Component.literal("?")));
+        players.broadcastAll(new ClientboundSetTitleTextPacket(Component.empty()));
         players.broadcastAll(new ClientboundSetSubtitleTextPacket(Component.literal("The wheel is spinning...")));
         SoundBroadcaster.playToAll(server, ModSounds.ROULETTE_APPEAR, SoundSource.MASTER, 1f, 1f);
         ModNetworking.sendToAll(new RouletteSpinPacket(drawnColor, SPIN_TICKS));
     }
 
     private static void tickSpin(MinecraftServer server) {
-        // ticks between spin sounds grow over time, simulating it slowing down
         if (ticksInPhase >= nextSpinTickAt) {
-            float progress = (float) ticksInPhase / SPIN_TICKS;
-            nextSpinTickAt = ticksInPhase + 2 + Math.round(progress * 13);
+            nextSpinTickAt = SpinTiming.nextChangeAt(ticksInPhase, SPIN_TICKS);
             float pitch = 0.8f + ThreadLocalRandom.current().nextFloat() * 0.7f;
             SoundBroadcaster.playToAll(server, ModSounds.ROULETTE_SPIN_TICK, SoundSource.MASTER, 1f, pitch);
         }
