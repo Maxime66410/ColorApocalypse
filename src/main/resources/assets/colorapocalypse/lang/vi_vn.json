@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Còn lại %s/%s màu:",
+  "colorapocalypse.status.timer_off": "\nHẹn giờ tự động: tắt.",
+  "colorapocalypse.status.next_draw": "\nLần quay tự động tiếp theo sau %s giây.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Đã đặt lại kho màu.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Đã tiếp tục hẹn giờ tự động.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Đã tạm dừng hẹn giờ tự động.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Cài đặt:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Cài đặt không xác định: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s đã được đặt thành %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Không còn màu nào trong kho. Dùng /colorapocalypse reset để nạp lại.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Tất cả các màu đã bị loại bỏ! Kho màu được nạp lại và ngày tận thế bắt đầu lại từ đầu.",
+
+  "colorapocalypse.countdown.subtitle": "Bánh xe sắp quay...",
+  "colorapocalypse.spin.subtitle": "Bánh xe đang quay...",
+  "colorapocalypse.reveal.subtitle": "đã bị loại bỏ!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s đã bị loại bỏ! Đang phá hủy các khối của nó trong %s chunk",
+  "colorapocalypse.reveal.mobs": ", tiêu diệt %s quái vật",
+  "colorapocalypse.reveal.items": " và phá hủy %s vật phẩm trên mặt đất",
+  "colorapocalypse.reveal.inventory": " (đã xóa %s vật phẩm khỏi túi đồ của người chơi)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

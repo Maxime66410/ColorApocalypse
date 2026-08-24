@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] %s/%s Farben übrig:",
+  "colorapocalypse.status.timer_off": "\nAutomatischer Timer: aus.",
+  "colorapocalypse.status.next_draw": "\nNächste automatische Ziehung in %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Farbpool zurückgesetzt.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatischer Timer fortgesetzt.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatischer Timer pausiert.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Einstellungen:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Unbekannte Einstellung: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s auf %s gesetzt.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Keine Farben mehr im Pool. Nutze /colorapocalypse reset, um ihn aufzufüllen.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Alle Farben wurden eliminiert! Der Pool füllt sich auf und die Apokalypse beginnt von vorn.",
+
+  "colorapocalypse.countdown.subtitle": "Das Rad dreht sich gleich...",
+  "colorapocalypse.spin.subtitle": "Das Rad dreht sich...",
+  "colorapocalypse.reveal.subtitle": "wurde eliminiert!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s eliminiert! Zerstöre seine Blöcke in %s Chunk(s)",
+  "colorapocalypse.reveal.mobs": ", tötet %s Mob(s)",
+  "colorapocalypse.reveal.items": " und zerstört %s Gegenstand/Gegenstände am Boden",
+  "colorapocalypse.reveal.inventory": " (%s Gegenstand/Gegenstände aus den Inventaren der Spieler entfernt)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

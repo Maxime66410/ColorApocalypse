@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] الألوان المتبقية: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nالمؤقت التلقائي: متوقف.",
+  "colorapocalypse.status.next_draw": "\nالسحب التلقائي التالي خلال %s ثانية.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] تمت إعادة تعيين مجموعة الألوان.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] تم استئناف المؤقت التلقائي.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] تم إيقاف المؤقت التلقائي مؤقتًا.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] الإعدادات:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] إعداد غير معروف: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] تم ضبط %s على %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] لم يتبق أي لون في المجموعة. استخدم /colorapocalypse reset لإعادة تعبئتها.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] تم القضاء على جميع الألوان! تُعاد تعبئة المجموعة وتبدأ نهاية العالم من جديد.",
+
+  "colorapocalypse.countdown.subtitle": "العجلة على وشك الدوران...",
+  "colorapocalypse.spin.subtitle": "العجلة تدور...",
+  "colorapocalypse.reveal.subtitle": "تم القضاء عليه!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] تم القضاء على %s! يتم تدمير كتله في %s قطعة أرض (chunk)",
+  "colorapocalypse.reveal.mobs": "، وقتل %s مخلوق",
+  "colorapocalypse.reveal.items": " وتدمير %s عنصر على الأرض",
+  "colorapocalypse.reveal.inventory": " (تمت إزالة %s عنصر من مخزون اللاعبين)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

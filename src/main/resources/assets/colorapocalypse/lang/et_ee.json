@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Alles jäänud värvid: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nAutomaatne taimer: väljas.",
+  "colorapocalypse.status.next_draw": "\nJärgmine automaatne loosimine %ss pärast.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Värvikogum lähtestati.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automaatne taimer jätkati.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automaatne taimer peatatud.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Seaded:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Tundmatu seade: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s seatud väärtusele %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Kogumis pole enam värve. Kasuta /colorapocalypse reset selle täitmiseks.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Kõik värvid on kõrvaldatud! Kogum täitub uuesti ja apokalüpsis algab otsast peale.",
+
+  "colorapocalypse.countdown.subtitle": "Ratas hakkab kohe pöörlema...",
+  "colorapocalypse.spin.subtitle": "Ratas pöörleb...",
+  "colorapocalypse.reveal.subtitle": "on kõrvaldatud!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s kõrvaldatud! Hävitab selle plokke %s chunkis",
+  "colorapocalypse.reveal.mobs": ", tappes %s mobi",
+  "colorapocalypse.reveal.items": " ja hävitades %s eset maas",
+  "colorapocalypse.reveal.inventory": " (%s eset eemaldatud mängijate inventarist)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

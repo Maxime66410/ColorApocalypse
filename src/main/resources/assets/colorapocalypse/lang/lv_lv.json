@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Atlikušās krāsas: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nAutomātiskais taimeris: izslēgts.",
+  "colorapocalypse.status.next_draw": "\nNākamā automātiskā izloze pēc %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Krāsu kopa ir atiestatīta.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automātiskais taimeris atsākts.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automātiskais taimeris apturēts.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Iestatījumi:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Nezināms iestatījums: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s iestatīts uz %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Kopā vairs nav krāsu. Izmanto /colorapocalypse reset, lai to papildinātu.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Visas krāsas ir likvidētas! Kopa tiek papildināta, un apokalipse sākas no jauna.",
+
+  "colorapocalypse.countdown.subtitle": "Ritenis tūlīt sāks griezties...",
+  "colorapocalypse.spin.subtitle": "Ritenis griežas...",
+  "colorapocalypse.reveal.subtitle": "ir likvidēta!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s likvidēta! Iznīcina tās blokus %s chunk(os)",
+  "colorapocalypse.reveal.mobs": ", nogalinot %s mobu(s)",
+  "colorapocalypse.reveal.items": " un iznīcinot %s priekšmetu(s) uz zemes",
+  "colorapocalypse.reveal.inventory": " (%s priekšmets(-i) noņemts(-i) no spēlētāju inventāra)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

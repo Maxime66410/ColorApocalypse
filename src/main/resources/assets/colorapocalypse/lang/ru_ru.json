@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Осталось цветов: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nАвтоматический таймер: выключен.",
+  "colorapocalypse.status.next_draw": "\nСледующий автоматический розыгрыш через %sс.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Пул цветов сброшен.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Автоматический таймер возобновлён.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Автоматический таймер приостановлен.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Настройки:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Неизвестная настройка: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s установлено на %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] В пуле не осталось цветов. Используйте /colorapocalypse reset, чтобы пополнить его.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Все цвета устранены! Пул пополняется, и апокалипсис начинается заново.",
+
+  "colorapocalypse.countdown.subtitle": "Колесо вот-вот начнёт вращаться...",
+  "colorapocalypse.spin.subtitle": "Колесо вращается...",
+  "colorapocalypse.reveal.subtitle": "устранён!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s устранён! Уничтожение его блоков в %s чанк(ов)",
+  "colorapocalypse.reveal.mobs": ", убито %s моб(ов)",
+  "colorapocalypse.reveal.items": " и уничтожено %s предмет(ов) на земле",
+  "colorapocalypse.reveal.inventory": " (%s предмет(ов) удалено из инвентарей игроков)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

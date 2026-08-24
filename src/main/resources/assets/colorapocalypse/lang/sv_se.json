@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] %s/%s färger kvar:",
+  "colorapocalypse.status.timer_off": "\nAutomatisk timer: av.",
+  "colorapocalypse.status.next_draw": "\nNästa automatiska dragning om %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Färgpoolen har återställts.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatisk timer återupptagen.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatisk timer pausad.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Inställningar:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Okänd inställning: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s inställd på %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Inga färger kvar i poolen. Använd /colorapocalypse reset för att fylla på den.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Alla färger har eliminerats! Poolen fylls på och apokalypsen börjar om.",
+
+  "colorapocalypse.countdown.subtitle": "Hjulet är på väg att snurra...",
+  "colorapocalypse.spin.subtitle": "Hjulet snurrar...",
+  "colorapocalypse.reveal.subtitle": "har eliminerats!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s eliminerad! Förstör dess block i %s chunk(s)",
+  "colorapocalypse.reveal.mobs": ", dödar %s mob(s)",
+  "colorapocalypse.reveal.items": " och förstör %s föremål på marken",
+  "colorapocalypse.reveal.inventory": " (%s föremål borttagna från spelarnas inventarier)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

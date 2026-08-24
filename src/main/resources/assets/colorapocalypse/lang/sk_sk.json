@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Zostávajúce farby: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nAutomatický časovač: vypnutý.",
+  "colorapocalypse.status.next_draw": "\nĎalšie automatické žrebovanie o %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Zásoba farieb bola resetovaná.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatický časovač obnovený.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatický časovač pozastavený.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Nastavenia:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Neznáme nastavenie: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s nastavené na %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] V zásobe už nie sú žiadne farby. Použi /colorapocalypse reset na jej doplnenie.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Všetky farby boli odstránené! Zásoba sa dopĺňa a apokalypsa začína odznova.",
+
+  "colorapocalypse.countdown.subtitle": "Koleso sa čoskoro roztočí...",
+  "colorapocalypse.spin.subtitle": "Koleso sa točí...",
+  "colorapocalypse.reveal.subtitle": "bola odstránená!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s odstránená! Ničenie jej blokov v %s chunku(och)",
+  "colorapocalypse.reveal.mobs": ", zabitých %s mobov",
+  "colorapocalypse.reveal.items": " a zničených %s predmetov na zemi",
+  "colorapocalypse.reveal.inventory": " (z inventárov hráčov odstránených %s predmetov)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

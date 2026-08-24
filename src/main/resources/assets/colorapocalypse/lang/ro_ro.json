@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Culori rămase: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nCronometru automat: dezactivat.",
+  "colorapocalypse.status.next_draw": "\nUrmătoarea tragere automată în %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Rezerva de culori a fost resetată.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Cronometru automat reluat.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Cronometru automat întrerupt.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Setări:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Setare necunoscută: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s setat la %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Nu mai sunt culori în rezervă. Folosește /colorapocalypse reset pentru a o reumple.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Toate culorile au fost eliminate! Rezerva se reumple și apocalipsa o ia de la capăt.",
+
+  "colorapocalypse.countdown.subtitle": "Roata este pe cale să se rotească...",
+  "colorapocalypse.spin.subtitle": "Roata se rotește...",
+  "colorapocalypse.reveal.subtitle": "a fost eliminată!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s eliminat! Se distrug blocurile sale în %s chunk(uri)",
+  "colorapocalypse.reveal.mobs": ", ucigând %s mob(uri)",
+  "colorapocalypse.reveal.items": " și distrugând %s obiect(e) de pe jos",
+  "colorapocalypse.reveal.inventory": " (%s obiect(e) eliminate din inventarul jucătorilor)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

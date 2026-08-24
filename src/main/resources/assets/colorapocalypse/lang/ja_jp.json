@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] 残りの色: %s/%s：",
+  "colorapocalypse.status.timer_off": "\n自動タイマー：オフ。",
+  "colorapocalypse.status.next_draw": "\n次の自動抽選まで %s 秒。",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] カラープールをリセットしました。",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] 自動タイマーを再開しました。",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] 自動タイマーを一時停止しました。",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] 設定：",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] 不明な設定: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s を %s に設定しました。",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] プールに色が残っていません。/colorapocalypse reset で補充してください。",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] すべての色が排除されました！プールが補充され、アポカリプスが最初から始まります。",
+
+  "colorapocalypse.countdown.subtitle": "ホイールがまもなく回転します……",
+  "colorapocalypse.spin.subtitle": "ホイールが回転しています……",
+  "colorapocalypse.reveal.subtitle": "が排除されました！",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s が排除されました！%s チャンク内のブロックを破壊しています",
+  "colorapocalypse.reveal.mobs": "、%s 体のMobを倒しました",
+  "colorapocalypse.reveal.items": "、地面の %s 個のアイテムを破壊しました",
+  "colorapocalypse.reveal.inventory": "（プレイヤーのインベントリから %s 個のアイテムを削除）",
+  "colorapocalypse.reveal.ellipsis": "……"
+}

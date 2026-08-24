@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] %s/%s farver tilbage:",
+  "colorapocalypse.status.timer_off": "\nAutomatisk timer: fra.",
+  "colorapocalypse.status.next_draw": "\nNæste automatiske træk om %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Farvepuljen er nulstillet.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatisk timer genoptaget.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatisk timer sat på pause.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Indstillinger:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Ukendt indstilling: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s sat til %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Ingen farver tilbage i puljen. Brug /colorapocalypse reset for at genopfylde den.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Alle farver er blevet elimineret! Puljen genopfyldes, og apokalypsen starter forfra.",
+
+  "colorapocalypse.countdown.subtitle": "Hjulet er ved at snurre...",
+  "colorapocalypse.spin.subtitle": "Hjulet snurrer...",
+  "colorapocalypse.reveal.subtitle": "er blevet elimineret!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s elimineret! Ødelægger dens blokke i %s chunk(s)",
+  "colorapocalypse.reveal.mobs": ", dræber %s mob(s)",
+  "colorapocalypse.reveal.items": " og ødelægger %s genstand(e) på jorden",
+  "colorapocalypse.reveal.inventory": " (%s genstand(e) fjernet fra spillernes inventar)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

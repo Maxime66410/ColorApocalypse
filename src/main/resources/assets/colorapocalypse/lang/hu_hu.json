@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Hátralévő színek: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nAutomatikus időzítő: kikapcsolva.",
+  "colorapocalypse.status.next_draw": "\nKövetkező automatikus sorsolás: %s másodperc múlva.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] A színkészlet visszaállítva.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatikus időzítő folytatva.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatikus időzítő szüneteltetve.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Beállítások:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Ismeretlen beállítás: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s beállítva erre: %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Nem maradt szín a készletben. Használd a /colorapocalypse reset parancsot a feltöltéshez.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Minden szín megsemmisült! A készlet feltöltődik, és az apokalipszis újrakezdődik.",
+
+  "colorapocalypse.countdown.subtitle": "A kerék mindjárt pörögni kezd...",
+  "colorapocalypse.spin.subtitle": "A kerék pörög...",
+  "colorapocalypse.reveal.subtitle": "megsemmisült!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s megsemmisült! Blokkjainak elpusztítása %s chunkban",
+  "colorapocalypse.reveal.mobs": ", %s mob elpusztítva",
+  "colorapocalypse.reveal.items": ", és %s tárgy megsemmisítve a földön",
+  "colorapocalypse.reveal.inventory": " (%s tárgy eltávolítva a játékosok leltárából)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

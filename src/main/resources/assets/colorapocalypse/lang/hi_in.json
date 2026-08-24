@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] बचे हुए रंग: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nस्वचालित टाइमर: बंद।",
+  "colorapocalypse.status.next_draw": "\nअगला स्वचालित ड्रॉ %s सेकंड में।",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] रंग पूल रीसेट कर दिया गया।",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] स्वचालित टाइमर फिर से शुरू।",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] स्वचालित टाइमर रोका गया।",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] सेटिंग्स:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] अज्ञात सेटिंग: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s को %s पर सेट किया गया।",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] पूल में कोई रंग नहीं बचा। इसे फिर से भरने के लिए /colorapocalypse reset का उपयोग करें।",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] सभी रंग समाप्त हो चुके हैं! पूल फिर से भर जाता है और सर्वनाश फिर से शुरू होता है।",
+
+  "colorapocalypse.countdown.subtitle": "पहिया घूमने वाला है...",
+  "colorapocalypse.spin.subtitle": "पहिया घूम रहा है...",
+  "colorapocalypse.reveal.subtitle": "समाप्त कर दिया गया है!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s समाप्त! इसके ब्लॉक %s चंक(ों) में नष्ट किए जा रहे हैं",
+  "colorapocalypse.reveal.mobs": ", %s मॉब मारे गए",
+  "colorapocalypse.reveal.items": " और ज़मीन पर %s आइटम नष्ट किए गए",
+  "colorapocalypse.reveal.inventory": " (खिलाड़ियों के इन्वेंटरी से %s आइटम हटाए गए)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

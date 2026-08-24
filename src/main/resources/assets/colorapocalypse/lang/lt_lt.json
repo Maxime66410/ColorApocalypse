@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Liko spalvų: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nAutomatinis laikmatis: išjungtas.",
+  "colorapocalypse.status.next_draw": "\nKitas automatinis traukimas po %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Spalvų telkinys atkurtas.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatinis laikmatis atnaujintas.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatinis laikmatis pristabdytas.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Nustatymai:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Nežinomas nustatymas: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s nustatyta į %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Telkinyje nebeliko spalvų. Naudok /colorapocalypse reset, kad jį papildytum.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Visos spalvos pašalintos! Telkinys papildomas ir apokalipsė prasideda iš naujo.",
+
+  "colorapocalypse.countdown.subtitle": "Ratas tuoj pradės suktis...",
+  "colorapocalypse.spin.subtitle": "Ratas sukasi...",
+  "colorapocalypse.reveal.subtitle": "buvo pašalinta!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s pašalinta! Naikinami jos blokai %s chunk(uose)",
+  "colorapocalypse.reveal.mobs": ", nužudant %s mob(ų)",
+  "colorapocalypse.reveal.items": " ir sunaikinant %s daiktą(-ų) ant žemės",
+  "colorapocalypse.reveal.inventory": " (%s daiktas(-ai) pašalintas(-i) iš žaidėjų inventoriaus)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] נותרו %s/%s צבעים:",
+  "colorapocalypse.status.timer_off": "\nטיימר אוטומטי: כבוי.",
+  "colorapocalypse.status.next_draw": "\nההגרלה האוטומטית הבאה בעוד %s שניות.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] מאגר הצבעים אופס.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] הטיימר האוטומטי חודש.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] הטיימר האוטומטי הושהה.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] הגדרות:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] הגדרה לא ידועה: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s הוגדר ל-%s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] לא נותרו צבעים במאגר. השתמש ב-/colorapocalypse reset כדי למלא אותו מחדש.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] כל הצבעים חוסלו! המאגר מתמלא מחדש והאפוקליפסה מתחילה מחדש.",
+
+  "colorapocalypse.countdown.subtitle": "הגלגל עומד להסתובב...",
+  "colorapocalypse.spin.subtitle": "הגלגל מסתובב...",
+  "colorapocalypse.reveal.subtitle": "חוסל!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s חוסל! הורס את הבלוקים שלו ב-%s נתחים (chunks)",
+  "colorapocalypse.reveal.mobs": ", הורג %s יצורים",
+  "colorapocalypse.reveal.items": " והורס %s פריטים על הקרקע",
+  "colorapocalypse.reveal.inventory": " (%s פריטים הוסרו מהמלאי של השחקנים)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

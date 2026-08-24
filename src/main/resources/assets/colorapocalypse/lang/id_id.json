@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] %s/%s warna tersisa:",
+  "colorapocalypse.status.timer_off": "\nPewaktu otomatis: mati.",
+  "colorapocalypse.status.next_draw": "\nPengundian otomatis berikutnya dalam %sd.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Kumpulan warna telah direset.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Pewaktu otomatis dilanjutkan.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Pewaktu otomatis dijeda.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Pengaturan:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Pengaturan tidak dikenal: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s diatur ke %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Tidak ada warna tersisa di kumpulan. Gunakan /colorapocalypse reset untuk mengisinya kembali.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Semua warna telah dieliminasi! Kumpulan warna terisi kembali dan kiamat dimulai lagi dari awal.",
+
+  "colorapocalypse.countdown.subtitle": "Roda akan segera berputar...",
+  "colorapocalypse.spin.subtitle": "Roda sedang berputar...",
+  "colorapocalypse.reveal.subtitle": "telah dieliminasi!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s dieliminasi! Menghancurkan blok-bloknya di %s chunk",
+  "colorapocalypse.reveal.mobs": ", membunuh %s mob",
+  "colorapocalypse.reveal.items": " dan menghancurkan %s item di tanah",
+  "colorapocalypse.reveal.inventory": " (%s item dihapus dari inventaris pemain)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Preostale boje: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nAutomatski tajmer: isključen.",
+  "colorapocalypse.status.next_draw": "\nSljedeće automatsko izvlačenje za %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Bazen boja je resetiran.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatski tajmer nastavljen.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatski tajmer zaustavljen.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Postavke:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Nepoznata postavka: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s postavljeno na %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Nema više boja u bazenu. Koristi /colorapocalypse reset da ga ponovno napuniš.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Sve boje su eliminirane! Bazen se ponovno puni i apokalipsa počinje ispočetka.",
+
+  "colorapocalypse.countdown.subtitle": "Kotač se uskoro počinje vrtjeti...",
+  "colorapocalypse.spin.subtitle": "Kotač se vrti...",
+  "colorapocalypse.reveal.subtitle": "je eliminirana!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s eliminirana! Uništavanje njezinih blokova u %s chunk(u)",
+  "colorapocalypse.reveal.mobs": ", ubijeno %s moba",
+  "colorapocalypse.reveal.items": " i uništeno %s predmeta na tlu",
+  "colorapocalypse.reveal.inventory": " (%s predmeta uklonjeno iz inventara igrača)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

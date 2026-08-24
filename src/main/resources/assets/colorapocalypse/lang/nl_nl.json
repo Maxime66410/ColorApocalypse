@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] %s/%s kleuren over:",
+  "colorapocalypse.status.timer_off": "\nAutomatische timer: uit.",
+  "colorapocalypse.status.next_draw": "\nVolgende automatische trekking over %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Kleurenpool gereset.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatische timer hervat.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatische timer gepauzeerd.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Instellingen:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Onbekende instelling: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s ingesteld op %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Geen kleuren meer in de pool. Gebruik /colorapocalypse reset om deze aan te vullen.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Alle kleuren zijn geëlimineerd! De pool wordt aangevuld en de apocalyps begint opnieuw.",
+
+  "colorapocalypse.countdown.subtitle": "Het wiel staat op het punt te draaien...",
+  "colorapocalypse.spin.subtitle": "Het wiel draait...",
+  "colorapocalypse.reveal.subtitle": "is geëlimineerd!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s geëlimineerd! Vernietiging van blokken in %s chunk(s)",
+  "colorapocalypse.reveal.mobs": ", waarbij %s mob(s) gedood zijn",
+  "colorapocalypse.reveal.items": " en %s item(s) op de grond vernietigd",
+  "colorapocalypse.reveal.inventory": " (%s item(s) verwijderd uit de inventaris van spelers)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

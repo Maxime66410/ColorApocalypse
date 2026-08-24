@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Απομένουν χρώματα: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nΑυτόματο χρονόμετρο: ανενεργό.",
+  "colorapocalypse.status.next_draw": "\nΕπόμενη αυτόματη κλήρωση σε %sδ.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Η δεξαμενή χρωμάτων επαναφέρθηκε.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Το αυτόματο χρονόμετρο συνεχίστηκε.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Το αυτόματο χρονόμετρο τέθηκε σε παύση.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Ρυθμίσεις:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Άγνωστη ρύθμιση: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] Το %s ορίστηκε σε %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Δεν έχουν απομείνει χρώματα στη δεξαμενή. Χρησιμοποίησε /colorapocalypse reset για να τη γεμίσεις ξανά.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Όλα τα χρώματα έχουν εξαλειφθεί! Η δεξαμενή γεμίζει ξανά και η αποκάλυψη ξεκινά από την αρχή.",
+
+  "colorapocalypse.countdown.subtitle": "Ο τροχός πρόκειται να γυρίσει...",
+  "colorapocalypse.spin.subtitle": "Ο τροχός γυρίζει...",
+  "colorapocalypse.reveal.subtitle": "εξαλείφθηκε!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] Το %s εξαλείφθηκε! Καταστροφή των μπλοκ του σε %s chunk(s)",
+  "colorapocalypse.reveal.mobs": ", σκοτώνοντας %s mob(s)",
+  "colorapocalypse.reveal.items": " και καταστρέφοντας %s αντικείμενο(α) στο έδαφος",
+  "colorapocalypse.reveal.inventory": " (%s αντικείμενο(α) αφαιρέθηκαν από το απόθεμα των παικτών)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

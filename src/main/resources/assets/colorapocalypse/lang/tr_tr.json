@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Kalan renkler: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nOtomatik zamanlayıcı: kapalı.",
+  "colorapocalypse.status.next_draw": "\nSonraki otomatik çekiliş %ss sonra.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Renk havuzu sıfırlandı.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Otomatik zamanlayıcı devam ettirildi.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Otomatik zamanlayıcı duraklatıldı.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Ayarlar:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Bilinmeyen ayar: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s, %s olarak ayarlandı.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Havuzda renk kalmadı. Doldurmak için /colorapocalypse reset kullan.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Tüm renkler yok edildi! Havuz yeniden doluyor ve kıyamet baştan başlıyor.",
+
+  "colorapocalypse.countdown.subtitle": "Çark dönmek üzere...",
+  "colorapocalypse.spin.subtitle": "Çark dönüyor...",
+  "colorapocalypse.reveal.subtitle": "yok edildi!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s yok edildi! %s chunk içindeki blokları yok ediyor",
+  "colorapocalypse.reveal.mobs": ", %s canavar öldürüldü",
+  "colorapocalypse.reveal.items": " ve yerdeki %s eşya yok edildi",
+  "colorapocalypse.reveal.inventory": " (oyuncu envanterlerinden %s eşya kaldırıldı)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

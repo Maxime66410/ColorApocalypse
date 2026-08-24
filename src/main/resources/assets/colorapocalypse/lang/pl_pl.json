@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Pozostałe kolory: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nAutomatyczny licznik: wyłączony.",
+  "colorapocalypse.status.next_draw": "\nNastępne automatyczne losowanie za %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Pula kolorów zresetowana.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatyczny licznik wznowiony.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatyczny licznik wstrzymany.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Ustawienia:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Nieznane ustawienie: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s ustawiono na %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] W puli nie ma już kolorów. Użyj /colorapocalypse reset, aby ją uzupełnić.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Wszystkie kolory zostały wyeliminowane! Pula się uzupełnia, a apokalipsa zaczyna się od nowa.",
+
+  "colorapocalypse.countdown.subtitle": "Koło zaraz zacznie się kręcić...",
+  "colorapocalypse.spin.subtitle": "Koło się kręci...",
+  "colorapocalypse.reveal.subtitle": "został wyeliminowany!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s wyeliminowany! Niszczenie jego bloków w %s fragmencie(-tach) mapy",
+  "colorapocalypse.reveal.mobs": ", zabijając %s stworzenie(-a)",
+  "colorapocalypse.reveal.items": " i niszcząc %s przedmiot(y) na ziemi",
+  "colorapocalypse.reveal.inventory": " (usunięto %s przedmiot(y) z ekwipunków graczy)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

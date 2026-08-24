@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] 剩余颜色 %s/%s：",
+  "colorapocalypse.status.timer_off": "\n自动计时器：关闭。",
+  "colorapocalypse.status.next_draw": "\n下次自动抽取还有 %s 秒。",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] 颜色池已重置。",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] 自动计时器已恢复。",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] 自动计时器已暂停。",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] 设置：",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] 未知设置：%s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s 已设置为 %s。",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] 颜色池中已无颜色。使用 /colorapocalypse reset 来重新填充。",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] 所有颜色都已被消灭！颜色池已重新填满，末日循环重新开始。",
+
+  "colorapocalypse.countdown.subtitle": "转盘即将开始转动……",
+  "colorapocalypse.spin.subtitle": "转盘正在转动……",
+  "colorapocalypse.reveal.subtitle": "已被消灭！",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s 已被消灭！正在摧毁 %s 个区块内的相关方块",
+  "colorapocalypse.reveal.mobs": "，击杀了 %s 只生物",
+  "colorapocalypse.reveal.items": "，摧毁了 %s 个掉落物",
+  "colorapocalypse.reveal.inventory": "（从玩家背包中移除了 %s 个物品）",
+  "colorapocalypse.reveal.ellipsis": "……"
+}

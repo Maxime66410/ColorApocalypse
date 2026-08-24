@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] %s/%s colores restantes:",
+  "colorapocalypse.status.timer_off": "\nTemporizador automático: desactivado.",
+  "colorapocalypse.status.next_draw": "\nPróximo sorteo automático en %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Reserva de colores reiniciada.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Temporizador automático reanudado.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Temporizador automático en pausa.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Ajustes:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Ajuste desconocido: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s establecido en %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] No quedan colores en la reserva. Usa /colorapocalypse reset para rellenarla.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] ¡Todos los colores han sido eliminados! La reserva se rellena y el apocalipsis vuelve a empezar.",
+
+  "colorapocalypse.countdown.subtitle": "La rueda está a punto de girar...",
+  "colorapocalypse.spin.subtitle": "La rueda está girando...",
+  "colorapocalypse.reveal.subtitle": "¡ha sido eliminado!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] ¡%s eliminado! Destruyendo sus bloques en %s chunk(s)",
+  "colorapocalypse.reveal.mobs": ", matando a %s mob(s)",
+  "colorapocalypse.reveal.items": " y destruyendo %s objeto(s) en el suelo",
+  "colorapocalypse.reveal.inventory": " (%s objeto(s) eliminado(s) del inventario de los jugadores)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

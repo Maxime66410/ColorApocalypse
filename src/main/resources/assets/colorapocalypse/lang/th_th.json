@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] สีที่เหลือ %s/%s:",
+  "colorapocalypse.status.timer_off": "\nตัวจับเวลาอัตโนมัติ: ปิด",
+  "colorapocalypse.status.next_draw": "\nการสุ่มอัตโนมัติครั้งถัดไปใน %s วินาที",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] รีเซ็ตกลุ่มสีแล้ว",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] เริ่มตัวจับเวลาอัตโนมัติต่อแล้ว",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] หยุดตัวจับเวลาอัตโนมัติชั่วคราวแล้ว",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] การตั้งค่า:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] ไม่รู้จักการตั้งค่า: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] ตั้งค่า %s เป็น %s แล้ว",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] ไม่มีสีเหลืออยู่ในกลุ่มแล้ว ใช้ /colorapocalypse reset เพื่อเติมใหม่",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] สีทั้งหมดถูกกำจัดแล้ว! กลุ่มสีถูกเติมใหม่และหายนะเริ่มต้นใหม่อีกครั้ง",
+
+  "colorapocalypse.countdown.subtitle": "วงล้อกำลังจะหมุน...",
+  "colorapocalypse.spin.subtitle": "วงล้อกำลังหมุน...",
+  "colorapocalypse.reveal.subtitle": "ถูกกำจัดแล้ว!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s ถูกกำจัดแล้ว! กำลังทำลายบล็อกใน %s ชังก์",
+  "colorapocalypse.reveal.mobs": " สังหารม็อบ %s ตัว",
+  "colorapocalypse.reveal.items": " และทำลายไอเทมบนพื้น %s ชิ้น",
+  "colorapocalypse.reveal.inventory": " (นำไอเทม %s ชิ้นออกจากกระเป๋าของผู้เล่น)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}

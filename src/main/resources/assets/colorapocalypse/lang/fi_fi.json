@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] Värejä jäljellä: %s/%s:",
+  "colorapocalypse.status.timer_off": "\nAutomaattinen ajastin: pois päältä.",
+  "colorapocalypse.status.next_draw": "\nSeuraava automaattinen arvonta %ss kuluttua.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Väriallas nollattu.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automaattinen ajastin jatkuu.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automaattinen ajastin pysäytetty.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Asetukset:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Tuntematon asetus: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s asetettu arvoon %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] Altaassa ei ole enää värejä. Käytä /colorapocalypse reset täyttääksesi sen.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Kaikki värit on eliminoitu! Allas täyttyy ja apokalypsi alkaa alusta.",
+
+  "colorapocalypse.countdown.subtitle": "Pyörä on kohta pyörimässä...",
+  "colorapocalypse.spin.subtitle": "Pyörä pyörii...",
+  "colorapocalypse.reveal.subtitle": "on eliminoitu!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s eliminoitu! Tuhotaan sen lohkoja %s chunkissa",
+  "colorapocalypse.reveal.mobs": ", tapetaan %s mobia",
+  "colorapocalypse.reveal.items": " ja tuhotaan %s esinettä maasta",
+  "colorapocalypse.reveal.inventory": " (%s esinettä poistettu pelaajien inventaariosta)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}
