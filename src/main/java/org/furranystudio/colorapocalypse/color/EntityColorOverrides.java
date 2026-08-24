@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 /** Loads {@code entity_colors.json}, the hand-curated color assignments for mobs with no inherent color. */
 public final class EntityColorOverrides {
 
-    private static final String RESOURCE_PATH = "/colorapocalypse/entity_colors.json";
+    private static final String RESOURCE_PATH = "/assets/colorapocalypse/config/entity_colors.json";
     private static final Pattern BLOCK_COMMENT = Pattern.compile("/\\*.*?\\*/", Pattern.DOTALL);
 
     private final Map<String, DyeColor> colorByEntityId;

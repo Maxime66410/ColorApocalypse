@@ -37,7 +37,7 @@ public final class ItemColorReport {
 
         StringBuilder report = new StringBuilder();
         report.append("ColorApocalypse item color report\n");
-        report.append("Edit src/main/resources/colorapocalypse/item_colors.json to fix any of this.\n\n");
+        report.append("Edit src/main/resources/assets/colorapocalypse/config/item_colors.json to fix any of this.\n\n");
         report.append("Resolved: ").append(resolved).append(" / ").append(total).append(" items\n\n");
         report.append("Unresolved (no color assigned): ").append(unresolved.size()).append('\n');
         for (String itemId : unresolved) {

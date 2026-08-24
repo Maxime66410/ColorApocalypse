@@ -90,7 +90,7 @@ public final class ColorBlockRegistry {
     private static void writeReport(Map<String, DyeColor> newBlocks, Map<String, String> divergences) {
         StringBuilder report = new StringBuilder();
         report.append("ColorApocalypse block color report\n");
-        report.append("Edit src/main/resources/colorapocalypse/block_colors.json to fix any of this.\n\n");
+        report.append("Edit src/main/resources/assets/colorapocalypse/config/block_colors.json to fix any of this.\n\n");
 
         report.append("New blocks (not in block_colors.json, using MapColor guess): ").append(newBlocks.size()).append('\n');
         for (Map.Entry<String, DyeColor> entry : newBlocks.entrySet()) {

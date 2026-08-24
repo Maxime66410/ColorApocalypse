@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 /** Loads {@code block_colors.json} the hand-edited overrides that win over the MapColor guess. */
 public final class BlockColorOverrides {
 
-    private static final String RESOURCE_PATH = "/colorapocalypse/block_colors.json";
+    private static final String RESOURCE_PATH = "/assets/colorapocalypse/config/block_colors.json";
     // Strips /* ... */ block comments before parsing, since standard JSON (and Gson, even in lenient mode) doesn't support comments at all, or maybe i'm a dumb ?
     private static final Pattern BLOCK_COMMENT = Pattern.compile("/\\*.*?\\*/", Pattern.DOTALL);
 

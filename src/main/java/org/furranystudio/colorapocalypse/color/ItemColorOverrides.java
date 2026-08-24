@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 /** Loads {@code item_colors.json}, the hand-curated color assignments for items with no color otherwise detected. */
 public final class ItemColorOverrides {
 
-    private static final String RESOURCE_PATH = "/colorapocalypse/item_colors.json";
+    private static final String RESOURCE_PATH = "/assets/colorapocalypse/config/item_colors.json";
     private static final Pattern BLOCK_COMMENT = Pattern.compile("/\\*.*?\\*/", Pattern.DOTALL);
 
     private final Map<String, DyeColor> colorByItemId;
