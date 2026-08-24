@@ -78,7 +78,7 @@ public final class ClientRouletteState {
 
     private static void setCurrentColor(DyeColor color) {
         currentColor = color;
-        Minecraft.getInstance().gui.hud.setTitle(Component.literal(color.getName().toUpperCase())
+        Minecraft.getInstance().gui.hud.setTitle(Component.translatable("color.minecraft." + color.getName())
             .withStyle(Style.EMPTY.withColor(TextColor.fromRgb(color.getTextColor()))));
     }
 }

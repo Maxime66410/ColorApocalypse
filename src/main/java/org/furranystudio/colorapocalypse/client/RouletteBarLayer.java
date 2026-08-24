@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.client.event.AddGuiOverlayLayersEvent;
@@ -51,6 +52,7 @@ public final class RouletteBarLayer {
         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BAR_PROGRESS, WIDTH, HEIGHT, 0, 0, left, top, WIDTH, HEIGHT, color);
 
         Font font = Minecraft.getInstance().font;
-        graphics.centeredText(font, current.getName().toUpperCase(), window.getGuiScaledWidth() / 2, top - 12, color);
+        graphics.centeredText(font, Component.translatable("color.minecraft." + current.getName()),
+            window.getGuiScaledWidth() / 2, top - 12, color);
     }
 }

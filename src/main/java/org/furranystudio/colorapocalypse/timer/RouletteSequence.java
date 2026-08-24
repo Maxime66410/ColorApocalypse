@@ -2,6 +2,7 @@ package org.furranystudio.colorapocalypse.timer;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket;
@@ -65,7 +66,7 @@ public final class RouletteSequence {
 
         ColorPoolData pool = server.overworld().getDataStorage().computeIfAbsent(ColorPoolData.TYPE);
         if (pool.getRemaining().isEmpty()) {
-            broadcastMessage(server, "[ColorApocalypse] No colors left in the pool. Use /colorapocalypse reset to refill it.");
+            broadcastMessage(server, Component.translatable("colorapocalypse.pool.empty"));
             return false;
         }
 
@@ -110,7 +111,7 @@ public final class RouletteSequence {
         players.broadcastAll(new ClientboundSetTitleTextPacket(
             Component.literal(String.valueOf(seconds)).withStyle(ChatFormatting.YELLOW)));
         players.broadcastAll(new ClientboundSetSubtitleTextPacket(
-            Component.literal("The wheel is about to spin...")));
+            Component.translatable("colorapocalypse.countdown.subtitle")));
         SoundBroadcaster.playToAll(server, ModSounds.COUNTDOWN_TICK, SoundSource.MASTER, 1f, 1f);
     }
 
@@ -118,14 +119,14 @@ public final class RouletteSequence {
         ColorPoolData pool = server.overworld().getDataStorage().computeIfAbsent(ColorPoolData.TYPE);
         drawnColor = pool.draw(ThreadLocalRandom.current());
         if (drawnColor == null) {
-            broadcastMessage(server, "[ColorApocalypse] No colors left in the pool. Use /colorapocalypse reset to refill it.");
+            broadcastMessage(server, Component.translatable("colorapocalypse.pool.empty"));
             activeServer = null;
             return;
         }
 
         if (pool.getRemaining().isEmpty()) {
             pool.reset();
-            broadcastMessage(server, "[ColorApocalypse] Every color has been eliminated! The pool refills and the apocalypse starts over.");
+            broadcastMessage(server, Component.translatable("colorapocalypse.pool.refilled"));
         }
 
         phase = Phase.SPINNING;
@@ -135,7 +136,7 @@ public final class RouletteSequence {
         PlayerList players = server.getPlayerList();
         players.broadcastAll(new ClientboundSetTitlesAnimationPacket(0, SPIN_TICKS, 5));
         players.broadcastAll(new ClientboundSetTitleTextPacket(Component.empty()));
-        players.broadcastAll(new ClientboundSetSubtitleTextPacket(Component.literal("The wheel is spinning...")));
+        players.broadcastAll(new ClientboundSetSubtitleTextPacket(Component.translatable("colorapocalypse.spin.subtitle")));
         SoundBroadcaster.playToAll(server, ModSounds.ROULETTE_APPEAR, SoundSource.MASTER, 1f, 1f);
         ModNetworking.sendToAll(new RouletteSpinPacket(drawnColor, SPIN_TICKS));
     }
@@ -164,21 +165,28 @@ public final class RouletteSequence {
         PlayerList players = server.getPlayerList();
         players.broadcastAll(new ClientboundSetTitlesAnimationPacket(5, 60, 20));
         players.broadcastAll(new ClientboundSetTitleTextPacket(
-            Component.literal(color.getName().toUpperCase())
+            Component.translatable("color.minecraft." + color.getName())
                 .withStyle(Style.EMPTY.withColor(TextColor.fromRgb(color.getTextColor())))));
         players.broadcastAll(new ClientboundSetSubtitleTextPacket(
-            Component.literal("has been eliminated!")));
+            Component.translatable("colorapocalypse.reveal.subtitle")));
         SoundBroadcaster.playToAll(server, ModSounds.ROULETTE_REVEAL, SoundSource.MASTER, 1f, 1f);
 
-        String mobSuffix = Config.MOB_KILL_ENABLED.get() ? ", killing " + mobsKilled + " mob(s)" : "";
-        String itemSuffix = Config.ITEM_DESTROY_ENABLED.get() ? " and destroying " + itemsDestroyed + " item drop(s)" : "";
-        String inventorySuffix = Config.INVENTORY_ITEM_DESTROY_ENABLED.get()
-            ? " (" + inventoryItemsDestroyed + " item(s) removed from player inventories)" : "";
-        broadcastMessage(server, "[ColorApocalypse] " + color.getName() + " eliminated! Destroying its blocks across "
-            + chunkCount + " chunk(s)" + mobSuffix + itemSuffix + inventorySuffix + "...");
+        MutableComponent message = Component.translatable("colorapocalypse.reveal.blocks",
+            Component.translatable("color.minecraft." + color.getName()), chunkCount);
+        if (Config.MOB_KILL_ENABLED.get()) {
+            message.append(Component.translatable("colorapocalypse.reveal.mobs", mobsKilled));
+        }
+        if (Config.ITEM_DESTROY_ENABLED.get()) {
+            message.append(Component.translatable("colorapocalypse.reveal.items", itemsDestroyed));
+        }
+        if (Config.INVENTORY_ITEM_DESTROY_ENABLED.get()) {
+            message.append(Component.translatable("colorapocalypse.reveal.inventory", inventoryItemsDestroyed));
+        }
+        message.append(Component.translatable("colorapocalypse.reveal.ellipsis"));
+        broadcastMessage(server, message);
     }
 
-    private static void broadcastMessage(MinecraftServer server, String message) {
-        server.getPlayerList().broadcastSystemMessage(Component.literal(message), false);
+    private static void broadcastMessage(MinecraftServer server, Component message) {
+        server.getPlayerList().broadcastSystemMessage(message, false);
     }
 }

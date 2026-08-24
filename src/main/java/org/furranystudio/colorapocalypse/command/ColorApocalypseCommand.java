@@ -6,6 +6,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import org.furranystudio.colorapocalypse.Config;
@@ -53,36 +54,36 @@ public final class ColorApocalypseCommand {
         var server = context.getSource().getServer();
         Set<DyeColor> remaining = getPool(context).getRemaining();
 
-        StringBuilder message = new StringBuilder(
-            "[ColorApocalypse] " + remaining.size() + "/" + DyeColor.values().length + " colors remaining:");
+        MutableComponent message = Component.translatable(
+            "colorapocalypse.status.header", remaining.size(), DyeColor.values().length);
         for (DyeColor color : DyeColor.values()) {
             if (remaining.contains(color)) {
-                message.append(' ').append(color.getName());
+                message.append(" ").append(colorName(color));
             }
         }
 
         long ticksRemaining = AutoTrigger.getTicksRemaining(server);
         if (ticksRemaining < 0) {
-            message.append("\nAutomatic timer: off.");
+            message.append(Component.translatable("colorapocalypse.status.timer_off"));
         } else {
-            message.append("\nNext automatic draw in ").append(ticksRemaining / 20).append("s.");
+            message.append(Component.translatable("colorapocalypse.status.next_draw", ticksRemaining / 20));
         }
 
-        context.getSource().sendSuccess(() -> Component.literal(message.toString()), true);
+        context.getSource().sendSuccess(() -> message, true);
         return 1;
     }
 
     private static int runReset(CommandContext<CommandSourceStack> context) {
         getPool(context).reset();
-        context.getSource().sendSuccess(() -> Component.literal("[ColorApocalypse] Color pool reset."), true);
+        context.getSource().sendSuccess(() -> Component.translatable("colorapocalypse.reset.success"), true);
         return 1;
     }
 
     private static int runPause(CommandContext<CommandSourceStack> context) {
         boolean enabled = !Config.AUTO_TIMER_ENABLED.get();
         Config.AUTO_TIMER_ENABLED.set(enabled);
-        context.getSource().sendSuccess(() -> Component.literal(
-            "[ColorApocalypse] Automatic timer " + (enabled ? "resumed." : "paused.")), true);
+        context.getSource().sendSuccess(() -> Component.translatable(
+            enabled ? "colorapocalypse.pause.resumed" : "colorapocalypse.pause.paused"), true);
         return 1;
     }
 
@@ -91,11 +92,11 @@ public final class ColorApocalypseCommand {
     }
 
     private static int runSettingsList(CommandContext<CommandSourceStack> context) {
-        StringBuilder message = new StringBuilder("[ColorApocalypse] Settings:");
+        MutableComponent message = Component.translatable("colorapocalypse.settings.header");
         for (String name : SettingsRegistry.names()) {
-            message.append("\n - ").append(name).append(" = ").append(SettingsRegistry.get(name).get());
+            message.append(Component.translatable("colorapocalypse.settings.entry", name, SettingsRegistry.get(name).get()));
         }
-        context.getSource().sendSuccess(() -> Component.literal(message.toString()), true);
+        context.getSource().sendSuccess(() -> message, true);
         return 1;
     }
 
@@ -105,7 +106,7 @@ public final class ColorApocalypseCommand {
 
         SettingsRegistry.Setting setting = SettingsRegistry.get(parameter);
         if (setting == null) {
-            context.getSource().sendFailure(Component.literal("[ColorApocalypse] Unknown setting: " + parameter));
+            context.getSource().sendFailure(Component.translatable("colorapocalypse.settings.unknown", parameter));
             return 0;
         }
 
@@ -115,8 +116,12 @@ public final class ColorApocalypseCommand {
             return 0;
         }
 
-        context.getSource().sendSuccess(() -> Component.literal(
-            "[ColorApocalypse] " + parameter + " set to " + setting.get() + "."), true);
+        context.getSource().sendSuccess(() -> Component.translatable(
+            "colorapocalypse.settings.set", parameter, setting.get()), true);
         return 1;
+    }
+
+    private static Component colorName(DyeColor color) {
+        return Component.translatable("color.minecraft." + color.getName());
     }
 }

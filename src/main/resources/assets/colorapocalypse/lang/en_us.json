@@ -1,0 +1,28 @@
+{
+  "colorapocalypse.status.header": "[ColorApocalypse] %s/%s colors remaining:",
+  "colorapocalypse.status.timer_off": "\nAutomatic timer: off.",
+  "colorapocalypse.status.next_draw": "\nNext automatic draw in %ss.",
+
+  "colorapocalypse.reset.success": "[ColorApocalypse] Color pool reset.",
+
+  "colorapocalypse.pause.resumed": "[ColorApocalypse] Automatic timer resumed.",
+  "colorapocalypse.pause.paused": "[ColorApocalypse] Automatic timer paused.",
+
+  "colorapocalypse.settings.header": "[ColorApocalypse] Settings:",
+  "colorapocalypse.settings.entry": "\n - %s = %s",
+  "colorapocalypse.settings.unknown": "[ColorApocalypse] Unknown setting: %s",
+  "colorapocalypse.settings.set": "[ColorApocalypse] %s set to %s.",
+
+  "colorapocalypse.pool.empty": "[ColorApocalypse] No colors left in the pool. Use /colorapocalypse reset to refill it.",
+  "colorapocalypse.pool.refilled": "[ColorApocalypse] Every color has been eliminated! The pool refills and the apocalypse starts over.",
+
+  "colorapocalypse.countdown.subtitle": "The wheel is about to spin...",
+  "colorapocalypse.spin.subtitle": "The wheel is spinning...",
+  "colorapocalypse.reveal.subtitle": "has been eliminated!",
+
+  "colorapocalypse.reveal.blocks": "[ColorApocalypse] %s eliminated! Destroying its blocks across %s chunk(s)",
+  "colorapocalypse.reveal.mobs": ", killing %s mob(s)",
+  "colorapocalypse.reveal.items": " and destroying %s item drop(s)",
+  "colorapocalypse.reveal.inventory": " (%s item(s) removed from player inventories)",
+  "colorapocalypse.reveal.ellipsis": "..."
+}
