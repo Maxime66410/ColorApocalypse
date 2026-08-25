@@ -1,3 +1,9 @@
+/**
+ * File: RouletteBarLayer.java
+ * Author: Maxime66410
+ * Created: 2026-08-23
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.client;
 
 import com.mojang.blaze3d.platform.Window;
@@ -13,7 +19,7 @@ import net.minecraftforge.client.event.AddGuiOverlayLayersEvent;
 import net.minecraftforge.client.gui.overlay.ForgeLayeredDraw;
 import org.furranystudio.colorapocalypse.Colorapocalypse;
 
-/** Recolors the vanilla XP bar (same sprites, tinted) to show the roulette while it's active. Only ever registered client-side. */
+// Recolors the vanilla XP bar (same sprites, tinted) to show the roulette while it's active. Only ever registered client-side
 public final class RouletteBarLayer {
 
     private static final Identifier BAR_BACKGROUND = Identifier.withDefaultNamespace("hud/experience_bar_background");

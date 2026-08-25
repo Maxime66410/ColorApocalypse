@@ -1,3 +1,9 @@
+/**
+ * File: RouletteSequence.java
+ * Author: Maxime66410
+ * Created: 2026-08-23
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.timer;
 
 import net.minecraft.ChatFormatting;
@@ -26,11 +32,7 @@ import org.furranystudio.colorapocalypse.sound.SoundBroadcaster;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * The full roulette sequence: 10s title countdown ("it's coming") -> the roulette itself
- * appears and spins for 5s -> it stops and reveals the drawn color (in its own color),
- * which starts destruction.
- */
+// The full roulette sequence: 10s title countdown ("it's coming") -> the roulette itself appears and spins for 5s -> it stops and reveals the drawn color (in its own color) which starts destruction.
 public final class RouletteSequence {
 
     private static final int COUNTDOWN_SECONDS = 10;
@@ -58,7 +60,7 @@ public final class RouletteSequence {
         return activeServer != null;
     }
 
-    /** Starts the countdown. Returns false if already running, or the pool is empty. */
+    // Starts the countdown. Returns false if already running, or the pool is empty.
     public static boolean start(MinecraftServer server) {
         if (isActive()) {
             return false;

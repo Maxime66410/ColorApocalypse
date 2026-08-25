@@ -1,3 +1,9 @@
+/**
+ * File: SoundBroadcaster.java
+ * Author: Maxime66410
+ * Created: 2026-08-23
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.sound;
 
 import net.minecraft.core.Holder;
@@ -14,9 +20,7 @@ public final class SoundBroadcaster {
     private SoundBroadcaster() {
     }
 
-    // Player.playSound() excludes that same player (it assumes their client already predicted
-    // the sound) - sending the packet straight to each connection, centered on that player's
-    // own position, is what actually reaches everyone regardless of where they are.
+    // Generic Function to play everyone the same Sound
     public static void playToAll(MinecraftServer server, Holder<SoundEvent> sound, SoundSource source, float volume, float pitch) {
         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
             player.connection.send(new ClientboundSoundPacket(

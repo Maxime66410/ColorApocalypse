@@ -1,3 +1,9 @@
+/**
+ * File: SettingsRegistry.java
+ * Author: Maxime66410
+ * Created: 2026-08-23
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.settings;
 
 import java.util.LinkedHashMap;
@@ -8,9 +14,7 @@ public final class SettingsRegistry {
     public interface Setting {
         String get();
 
-        /**
-         * @return {@code null} on success, or an error message describing why the value was rejected
-         */
+        /** @return {@code null} on success, or an error message describing why the value was rejected */
         String trySet(String rawValue);
     }
 

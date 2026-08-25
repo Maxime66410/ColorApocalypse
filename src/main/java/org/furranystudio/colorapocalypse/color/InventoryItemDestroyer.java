@@ -1,3 +1,9 @@
+/**
+ * File: InventoryItemDestroyer.java
+ * Author: Maxime66410
+ * Created: 2026-08-24
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.color;
 
 import net.minecraft.server.MinecraftServer;
@@ -7,7 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 
-/** Clears matching-colored items from every online player's inventory and equipment. Opt-in. */
+// Clears matching-colored items from every online player's inventory and equipment. Opt-in.
 public final class InventoryItemDestroyer {
 
     private InventoryItemDestroyer() {

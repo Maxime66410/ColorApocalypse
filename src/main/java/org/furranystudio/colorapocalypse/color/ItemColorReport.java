@@ -1,3 +1,9 @@
+/**
+ * File: ItemColorReport.java
+ * Author: Maxime66410
+ * Created: 2026-08-24
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.color;
 
 import net.minecraft.world.item.DyeColor;

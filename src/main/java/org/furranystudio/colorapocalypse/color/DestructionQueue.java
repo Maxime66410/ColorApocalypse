@@ -1,3 +1,9 @@
+/**
+ * File: DestructionQueue.java
+ * Author: Maxime66410
+ * Created: 2026-08-23
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.color;
 
 import net.minecraft.core.BlockPos;
@@ -96,7 +102,7 @@ public final class DestructionQueue {
             }
 
             if (!sectionEntered && !enterNextSection()) {
-                continue; // chunk finished, or section skipped - loop back around
+                continue; // chunk finished, or section skipped, loop back around
             }
 
             processPosition(pos);
@@ -119,7 +125,7 @@ public final class DestructionQueue {
         return true;
     }
 
-    /** True once positioned at a section worth scanning; false if skipped or chunk is done. */
+    // True once positioned at a section worth scanning, false if skipped or chunk is done.
     private static boolean enterNextSection() {
         ServerLevel level = currentChunk.level();
         if (cursorSectionY > level.getMaxSectionY()) {
@@ -151,8 +157,6 @@ public final class DestructionQueue {
 
         BlockState state = level.getBlockState(pos);
         if (!state.isAir() && targetBlocks.contains(state.getBlock())) {
-            // removeBlock() just puts the fluid back; setBlock+AIR actually clears it.
-            // Flag 2 skips neighbor updates (redstone, gravity...) - that cascade was the real lag source.
             level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
         }
     }

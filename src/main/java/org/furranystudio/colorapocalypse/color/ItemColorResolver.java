@@ -1,3 +1,9 @@
+/**
+ * File: ItemColorResolver.java
+ * Author: Maxime66410
+ * Created: 2026-08-24
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.color;
 
 import net.minecraft.world.item.BlockItem;
@@ -8,12 +14,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Map;
 
 /**
- * Resolves the DyeColor an item "belongs to", if any. {@code item_colors.json} wins first;
- * then block items (wool, concrete, dyed banners...) fall back to their block's resolved
- * color ({@link ColorBlockRegistry}); then plain items fall back to a color name found in
- * their own id (dyes: "red_dye" -> RED); then tools/armor/ingots fall back to their material
- * (iron/gold/diamond/netherite/copper/leather/chainmail/stone/wood, e.g. "iron_pickaxe" and
- * "raw_iron" both -> LIGHT_GRAY). Anything else has no color.
+ * Resolves the DyeColor an item "belongs to", if any. {@code item_colors.json} wins first then block items (wool, concrete, dyed banners...) fall back to their block's resolved color ({@link ColorBlockRegistry}).
+ * Then plain items fall back to a color name found in their own id (dyes: "red_dye" -> RED), then tools/armor/ingots fall back to their material (iron/gold/diamond/netherite/copper/leather/chainmail/stone/wood, etc "iron_pickaxe" and "raw_iron" both -> LIGHT_GRAY).
+ * Anything else has no color.
  */
 public final class ItemColorResolver {
 

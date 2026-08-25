@@ -1,3 +1,9 @@
+/**
+ * File: EntityColorOverrides.java
+ * Author: Maxime66410
+ * Created: 2026-08-23
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.color;
 
 import com.google.gson.Gson;

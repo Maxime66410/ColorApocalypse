@@ -1,3 +1,9 @@
+/**
+ * File: ItemDestroyer.java
+ * Author: Maxime66410
+ * Created: 2026-08-24
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.color;
 
 import net.minecraft.server.MinecraftServer;
@@ -9,7 +15,7 @@ import net.minecraft.world.item.DyeColor;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Discards every loaded item drop whose resolved color matches the eliminated one. */
+// Discards every loaded item drop whose resolved color matches the eliminated one.
 public final class ItemDestroyer {
 
     private ItemDestroyer() {

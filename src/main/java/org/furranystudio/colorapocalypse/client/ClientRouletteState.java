@@ -1,3 +1,9 @@
+/**
+ * File: ClientRouletteState.java
+ * Author: Maxime66410
+ * Created: 2026-08-23
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.client;
 
 import net.minecraft.client.Minecraft;
@@ -58,10 +64,7 @@ public final class ClientRouletteState {
             return;
         }
 
-        // SpinTiming is the same schedule the server uses for the spin-tick sound - sharing
-        // it is what keeps color changes and sound ticks from drifting apart. Once the next
-        // scheduled change would overshoot durationTicks, that change IS the real result -
-        // shown right when the natural slowdown gets there, no separate cutoff needed.
+        // If we have reached the final change, set the current color to the target color and mark as landed. Otherwise, set the next change time and pick a random color.
         if (SpinTiming.isFinalChange(ticksElapsed, durationTicks)) {
             setCurrentColor(targetColor);
             landed = true;

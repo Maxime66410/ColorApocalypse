@@ -1,3 +1,9 @@
+/**
+ * File: MobColorResolver.java
+ * Author: Maxime66410
+ * Created: 2026-08-24
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.color;
 
 import net.minecraft.core.Holder;
@@ -20,11 +26,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
- * Resolves the DyeColor a mob "belongs to", if any. Sheep, wolves, llamas, tropical fish and
- * shulkers have a real per-instance color read straight off the entity. Cats, cows, frogs,
- * horses, pandas, rabbits and parrots have variants instead of a color - we just take the
- * first color name found in the variant's id (e.g. "dark_brown" -> BROWN, "red_blue" -> RED),
- * so plenty of their variants (tabby, siamese, temperate...) simply won't match anything.
+ * Resolves the DyeColor a mob "belongs to", if any. Sheep, wolves, llamas, tropical fish and shulkers have a real per-instance color read straight off the entity. Cats, cows, frogs, horses, pandas, rabbits and parrots have variants instead of a color,
+ * we just take the first color name found in the variant's id (example "dark_brown" -> BROWN, "red_blue" -> RED), so plenty of their variants (tabby, siamese, temperate...) simply won't match anything.
  * Every other mob only counts if it's listed in {@code entity_colors.json}.
  */
 public final class MobColorResolver {

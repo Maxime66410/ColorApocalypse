@@ -1,3 +1,9 @@
+/**
+ * File: ColorBlockRegistry.java
+ * Author: Maxime66410
+ * Created: 2026-08-23
+ * Last Modified: 2026-08-24
+ */
 package org.furranystudio.colorapocalypse.color;
 
 import net.minecraft.core.BlockPos;
@@ -23,7 +29,7 @@ import java.util.TreeMap;
 
 /**
  * Buckets every block into a {@link DyeColor}. {@code block_colors.json} wins when it lists a
- * block; otherwise falls back to a {@link MapColor}-based guess. Writes a report of new/divergent
+ * block, otherwise falls back to a {@link MapColor}-based guess. Writes a report of new/divergent
  * blocks so the JSON can be kept up to date.
  */
 public final class ColorBlockRegistry {
@@ -119,7 +125,7 @@ public final class ColorBlockRegistry {
         try {
             return block.defaultBlockState().getMapColor(EmptyBlockGetter.INSTANCE, BlockPos.ZERO);
         } catch (Exception e) {
-            // some blocks need real level/neighbor data for this - just skip them
+            // some blocks need real level/neighbor data for this, just skip them
             return null;
         }
     }
