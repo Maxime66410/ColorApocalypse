@@ -69,7 +69,7 @@ public final class ColorApocalypseCommand {
             message.append(Component.translatable("colorapocalypse.status.next_draw", ticksRemaining / 20));
         }
 
-        context.getSource().sendSuccess(() -> message, true);
+        context.getSource().sendSuccess(() -> message, false);
         return 1;
     }
 
@@ -96,7 +96,7 @@ public final class ColorApocalypseCommand {
         for (String name : SettingsRegistry.names()) {
             message.append(Component.translatable("colorapocalypse.settings.entry", name, SettingsRegistry.get(name).get()));
         }
-        context.getSource().sendSuccess(() -> message, true);
+        context.getSource().sendSuccess(() -> message, false);
         return 1;
     }
 
