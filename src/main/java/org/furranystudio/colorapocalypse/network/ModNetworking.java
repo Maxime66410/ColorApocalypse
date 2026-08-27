@@ -2,36 +2,28 @@
  * File: ModNetworking.java
  * Author: Maxime66410
  * Created: 2026-08-23
- * Last Modified: 2026-08-24
+ * Last Modified: 2026-08-27
  */
 package org.furranystudio.colorapocalypse.network;
 
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.network.ChannelBuilder;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.PacketDistributor;
-import net.minecraftforge.network.SimpleChannel;
-import org.furranystudio.colorapocalypse.Colorapocalypse;
-
+// Loader-agnostic send point. Each loader's bootstrap sets the Sender once at startup, wiring
+// it to its own networking API (Forge: SimpleChannel; Fabric: ServerPlayNetworking).
 public final class ModNetworking {
 
-    private static final SimpleChannel CHANNEL = ChannelBuilder
-        .named(Identifier.fromNamespaceAndPath(Colorapocalypse.MODID, "main"))
-        .networkProtocolVersion(1)
-        .simpleChannel();
+    public interface Sender {
+        void sendToAll(RouletteSpinPacket packet);
+    }
+
+    private static Sender sender;
 
     private ModNetworking() {
     }
 
-    public static void register() {
-        CHANNEL.messageBuilder(RouletteSpinPacket.class, NetworkDirection.PLAY_TO_CLIENT)
-            .encoder(RouletteSpinPacket::encode)
-            .decoder(RouletteSpinPacket::decode)
-            .consumerMainThread(RouletteSpinPacket::handle)
-            .add();
+    public static void init(Sender sender) {
+        ModNetworking.sender = sender;
     }
 
-    public static void sendToAll(Object message) {
-        CHANNEL.send(message, PacketDistributor.ALL.noArg());
+    public static void sendToAll(RouletteSpinPacket packet) {
+        sender.sendToAll(packet);
     }
 }

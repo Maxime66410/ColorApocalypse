@@ -7,6 +7,7 @@
 package org.furranystudio.colorapocalypse.color;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.cow.Cow;
@@ -23,7 +24,6 @@ import net.minecraft.world.entity.animal.wolf.Wolf;
 import net.minecraft.world.entity.monster.Shulker;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
 /**
  * Resolves the DyeColor a mob "belongs to", if any. Sheep, wolves, llamas, tropical fish and shulkers have a real per-instance color read straight off the entity. Cats, cows, frogs, horses, pandas, rabbits and parrots have variants instead of a color,
@@ -51,7 +51,7 @@ public final class MobColorResolver {
             case Cat cat -> colorFromHolder(cat.getVariant());
             case Cow cow -> colorFromHolder(cow.getVariant());
             case Frog frog -> colorFromHolder(frog.getVariant());
-            default -> OVERRIDES.get(String.valueOf(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())));
+            default -> OVERRIDES.get(String.valueOf(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType())));
         };
     }
 
@@ -65,7 +65,7 @@ public final class MobColorResolver {
             return DyeColor.WHITE;
         }
 
-        String itemId = String.valueOf(ForgeRegistries.ITEMS.getKey(carpet.getItem()));
+        String itemId = String.valueOf(BuiltInRegistries.ITEM.getKey(carpet.getItem()));
         String path = itemId.substring(itemId.indexOf(':') + 1);
         if (!path.endsWith("_carpet")) {
             return DyeColor.WHITE;

@@ -8,10 +8,13 @@ package org.furranystudio.colorapocalypse.timer;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.Difficulty;
-import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.Config;
 
-/** Kicks off {@link RouletteSequence} manually or on a difficulty-based timer. */
+/**
+ * Kicks off {@link RouletteSequence} manually or on a difficulty-based timer. {@link #tick}
+ * must be called every server tick by each loader's bootstrap - see {@code forge}/{@code fabric}
+ * bootstrap packages for the wiring.
+ */
 public final class AutoTrigger {
 
     private static final int TICKS_PER_MINUTE = 20 * 60;
@@ -19,10 +22,6 @@ public final class AutoTrigger {
     private static long nextDrawTick = -1;
 
     private AutoTrigger() {
-    }
-
-    public static void register() {
-        TickEvent.ServerTickEvent.Post.BUS.addListener(event -> tick(event.server()));
     }
 
     // Starts the roulette sequence right now. Returns false if it couldn't start (already running, empty pool).
@@ -43,7 +42,7 @@ public final class AutoTrigger {
         return Math.max(0, nextDrawTick - server.getTickCount());
     }
 
-    private static void tick(MinecraftServer server) {
+    public static void tick(MinecraftServer server) {
         int intervalMinutes = intervalMinutesFor(server.overworld().getDifficulty());
         if (!Config.AUTO_TIMER_ENABLED.get() || intervalMinutes <= 0) {
             nextDrawTick = -1;

@@ -2,19 +2,19 @@
  * File: IntSetting.java
  * Author: Maxime66410
  * Created: 2026-08-23
- * Last Modified: 2026-08-24
+ * Last Modified: 2026-08-27
  */
 package org.furranystudio.colorapocalypse.settings;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import org.furranystudio.colorapocalypse.ConfigValue;
 
 public final class IntSetting implements SettingsRegistry.Setting {
 
-    private final ForgeConfigSpec.IntValue value;
+    private final ConfigValue<Integer> value;
     private final int min;
     private final int max;
 
-    public IntSetting(ForgeConfigSpec.IntValue value, int min, int max) {
+    public IntSetting(ConfigValue<Integer> value, int min, int max) {
         this.value = value;
         this.min = min;
         this.max = max;

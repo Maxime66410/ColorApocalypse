@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.Colorapocalypse;
 import org.furranystudio.colorapocalypse.Config;
 
@@ -47,10 +46,6 @@ public final class DestructionQueue {
     private static int cursorZ;
 
     private DestructionQueue() {
-    }
-
-    public static void register() {
-        TickEvent.ServerTickEvent.Post.BUS.addListener(event -> tick());
     }
 
     public static boolean isActive() {
@@ -85,7 +80,8 @@ public final class DestructionQueue {
         return QUEUE.size();
     }
 
-    private static void tick() {
+    // Called every server tick by each loader's bootstrap.
+    public static void tick() {
         if (!isActive()) {
             return;
         }

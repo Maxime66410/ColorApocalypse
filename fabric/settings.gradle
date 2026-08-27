@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+// Loom bundles Gson 2.9.1, which crashes under Java 17+'s stricter final-field reflection
+// rules when parsing Mojang's version manifest (upstream: FabricMC/fabric-loom#1459, closed
+// "not planned" but with a working community workaround - force a newer Gson onto the
+// classpath that resolves the plugins{} block below, i.e. here in settings.gradle).
+buildscript {
+    dependencies {
+        classpath 'com.google.code.gson:gson:2.10.1'
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.7.0'
+}
+
+rootProject.name = 'colorapocalypse-fabric'

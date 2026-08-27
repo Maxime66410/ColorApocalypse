@@ -6,11 +6,11 @@
  */
 package org.furranystudio.colorapocalypse.color;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.furranystudio.colorapocalypse.Colorapocalypse;
+import org.furranystudio.colorapocalypse.Platform;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -21,7 +21,7 @@ import java.util.TreeSet;
 /** Writes a report of every item that {@link ItemColorResolver} could NOT assign a color to. */
 public final class ItemColorReport {
 
-    private static final Path REPORT_PATH = FMLPaths.GAMEDIR.get()
+    private static final Path REPORT_PATH = Platform.getGameDir()
         .resolve("colorapocalypse").resolve("cache").resolve("item_color_report.txt");
 
     private ItemColorReport() {
@@ -31,11 +31,11 @@ public final class ItemColorReport {
         int total = 0;
         TreeSet<String> unresolved = new TreeSet<>();
 
-        for (Item item : ForgeRegistries.ITEMS) {
+        for (Item item : BuiltInRegistries.ITEM) {
             total++;
             DyeColor color = ItemColorResolver.resolve(item);
             if (color == null) {
-                unresolved.add(String.valueOf(ForgeRegistries.ITEMS.getKey(item)));
+                unresolved.add(String.valueOf(BuiltInRegistries.ITEM.getKey(item)));
             }
         }
 

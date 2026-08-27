@@ -7,13 +7,13 @@
 package org.furranystudio.colorapocalypse.color;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.EmptyBlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.furranystudio.colorapocalypse.Colorapocalypse;
+import org.furranystudio.colorapocalypse.Platform;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -34,7 +34,7 @@ import java.util.TreeMap;
  */
 public final class ColorBlockRegistry {
 
-    private static final Path REPORT_PATH = FMLPaths.GAMEDIR.get()
+    private static final Path REPORT_PATH = Platform.getGameDir()
         .resolve("colorapocalypse").resolve("cache").resolve("block_color_report.txt");
 
     private static final Map<DyeColor, List<Block>> BLOCKS_BY_COLOR = new EnumMap<>(DyeColor.class);
@@ -49,7 +49,7 @@ public final class ColorBlockRegistry {
         }
 
         Map<Block, DyeColor> guessedColorByBlock = new LinkedHashMap<>();
-        for (Block block : ForgeRegistries.BLOCKS) {
+        for (Block block : BuiltInRegistries.BLOCK) {
             MapColor mapColor = resolveMapColor(block);
             if (mapColor == null || mapColor == MapColor.NONE) {
                 continue;
@@ -65,7 +65,7 @@ public final class ColorBlockRegistry {
         for (Map.Entry<Block, DyeColor> entry : guessedColorByBlock.entrySet()) {
             Block block = entry.getKey();
             DyeColor guessed = entry.getValue();
-            String blockId = String.valueOf(ForgeRegistries.BLOCKS.getKey(block));
+            String blockId = String.valueOf(BuiltInRegistries.BLOCK.getKey(block));
 
             DyeColor override = overrides.get(blockId);
             DyeColor finalColor = override != null ? override : guessed;

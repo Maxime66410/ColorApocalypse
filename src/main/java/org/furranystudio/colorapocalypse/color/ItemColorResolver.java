@@ -6,10 +6,10 @@
  */
 package org.furranystudio.colorapocalypse.color;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Map;
 
@@ -39,7 +39,7 @@ public final class ItemColorResolver {
     }
 
     public static DyeColor resolve(Item item) {
-        String itemId = String.valueOf(ForgeRegistries.ITEMS.getKey(item));
+        String itemId = String.valueOf(BuiltInRegistries.ITEM.getKey(item));
 
         DyeColor override = OVERRIDES.get(itemId);
         if (override != null) {

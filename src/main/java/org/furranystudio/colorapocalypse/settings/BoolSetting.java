@@ -2,17 +2,17 @@
  * File: BoolSetting.java
  * Author: Maxime66410
  * Created: 2026-08-23
- * Last Modified: 2026-08-24
+ * Last Modified: 2026-08-27
  */
 package org.furranystudio.colorapocalypse.settings;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import org.furranystudio.colorapocalypse.ConfigValue;
 
 public final class BoolSetting implements SettingsRegistry.Setting {
 
-    private final ForgeConfigSpec.BooleanValue value;
+    private final ConfigValue<Boolean> value;
 
-    public BoolSetting(ForgeConfigSpec.BooleanValue value) {
+    public BoolSetting(ConfigValue<Boolean> value) {
         this.value = value;
     }
 

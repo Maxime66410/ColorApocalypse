@@ -11,7 +11,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.timer.SpinTiming;
 
 import java.util.Random;
@@ -33,10 +32,6 @@ public final class ClientRouletteState {
     private ClientRouletteState() {
     }
 
-    public static void register() {
-        TickEvent.ClientTickEvent.Post.BUS.addListener(event -> tick());
-    }
-
     public static void start(DyeColor color, int duration) {
         targetColor = color;
         durationTicks = Math.max(duration, 1);
@@ -54,7 +49,8 @@ public final class ClientRouletteState {
         return currentColor;
     }
 
-    private static void tick() {
+    // Called every client tick by each loader's bootstrap.
+    public static void tick() {
         if (!isSpinning()) {
             return;
         }

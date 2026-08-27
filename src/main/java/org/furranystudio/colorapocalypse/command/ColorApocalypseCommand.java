@@ -6,6 +6,7 @@
  */
 package org.furranystudio.colorapocalypse.command;
 
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.commands.CommandSourceStack;
@@ -14,7 +15,6 @@ import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.event.RegisterCommandsEvent;
 import org.furranystudio.colorapocalypse.Config;
 import org.furranystudio.colorapocalypse.color.ColorPoolData;
 import org.furranystudio.colorapocalypse.settings.SettingsRegistry;
@@ -22,17 +22,15 @@ import org.furranystudio.colorapocalypse.timer.AutoTrigger;
 
 import java.util.Set;
 
+// Command tree is pure Brigadier/vanilla - each loader's bootstrap calls register(dispatcher)
+// from its own command-registration hook (Forge: RegisterCommandsEvent; Fabric: CommandRegistrationCallback).
 public final class ColorApocalypseCommand {
 
     private ColorApocalypseCommand() {
     }
 
-    public static void register() {
-        RegisterCommandsEvent.BUS.addListener(ColorApocalypseCommand::onRegisterCommands);
-    }
-
-    private static void onRegisterCommands(RegisterCommandsEvent event) {
-        event.getDispatcher().register(
+    public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
+        dispatcher.register(
             Commands.literal("colorapocalypse")
                 .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
                 .then(Commands.literal("start")

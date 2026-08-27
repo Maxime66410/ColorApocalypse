@@ -18,7 +18,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.event.TickEvent;
 import org.furranystudio.colorapocalypse.Config;
 import org.furranystudio.colorapocalypse.color.ColorPoolData;
 import org.furranystudio.colorapocalypse.color.DestructionQueue;
@@ -52,10 +51,6 @@ public final class RouletteSequence {
     private RouletteSequence() {
     }
 
-    public static void register() {
-        TickEvent.ServerTickEvent.Post.BUS.addListener(event -> tick(event.server()));
-    }
-
     public static boolean isActive() {
         return activeServer != null;
     }
@@ -80,7 +75,8 @@ public final class RouletteSequence {
         return true;
     }
 
-    private static void tick(MinecraftServer server) {
+    // Called every server tick by each loader's bootstrap.
+    public static void tick(MinecraftServer server) {
         if (!isActive() || server != activeServer) {
             return;
         }
