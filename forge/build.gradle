@@ -26,10 +26,12 @@ sourceSets {
         java {
             srcDirs = ['../src/main/java']
             exclude 'org/furranystudio/colorapocalypse/fabric/**'
+            exclude 'org/furranystudio/colorapocalypse/neoforge/**'
         }
         resources {
             srcDirs = ['../src/main/resources', '../src/generated/resources']
             exclude 'fabric.mod.json'
+            exclude 'META-INF/neoforge.mods.toml'
         }
     }
 }

@@ -16,10 +16,12 @@ sourceSets {
         java {
             srcDirs = ['../src/main/java']
             exclude 'org/furranystudio/colorapocalypse/forge/**'
+            exclude 'org/furranystudio/colorapocalypse/neoforge/**'
         }
         resources {
             srcDirs = ['../src/main/resources']
             exclude 'META-INF/mods.toml'
+            exclude 'META-INF/neoforge.mods.toml'
         }
     }
 }
