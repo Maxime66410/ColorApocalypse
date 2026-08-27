@@ -1,6 +1,6 @@
 # ColorApocalypse
 
-**ColorApocalypse** is a Minecraft mod (Forge, Fabric & NeoForge) that turns survival into a chaotic and unpredictable challenge: the world progressively loses its colors, and each color that disappears causes the instant destruction of everything associated with it blocks, mobs, and item drops.
+**ColorApocalypse** is a Minecraft mod (Forge, Fabric/Quilt, NeoForge) that turns survival into a chaotic and unpredictable challenge: the world progressively loses its colors, and each color that disappears causes the instant destruction of everything associated with it blocks, mobs, and item drops.
 
 > ⚠️ The mod is functional and playable, but still being tuned and expanded.
 
@@ -54,7 +54,7 @@ Which block/mob/item belongs to which color isn't hardcoded from a fixed list it
 
 ## Technical details
 
-- **Platforms:** Forge, Fabric, NeoForge
+- **Platforms:** Forge, Fabric/Quilt, NeoForge
 - **Minecraft:** 26.2
 - **Forge:** 65.1.2
 - **Fabric Loader:** 0.19.4 / **Fabric API:** 0.158.0+26.2
